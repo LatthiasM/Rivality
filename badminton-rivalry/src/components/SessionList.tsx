@@ -1,13 +1,15 @@
 import { Session } from '../types';
 import { deleteSession } from '../lib/storage';
+import { toast } from 'react-hot-toast';
 
 
 export default function SessionList({ sessions, onDeleted }: { sessions: Session[]; onDeleted: (id: string)=>void }) {
-async function handleDelete(id: string) {
-if (!confirm('Supprimer cette séance ?')) return;
-await deleteSession(id);
-onDeleted(id);
-}
+  async function handleDelete(id: string) {
+    if (!confirm('Supprimer cette séance ?')) return;
+    await deleteSession(id);
+    onDeleted(id);
+    toast.success('Séance supprimée.'); // <--- 2. L'appel au toast !
+  }
 
 
 return (

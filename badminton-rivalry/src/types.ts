@@ -1,30 +1,32 @@
-export type PlayerId = 'Matthias' | 'Paul' | 'Steven';
+// La correction clé : 'string' devient string (sans guillemets)
+export type PlayerId = string;
 
 
 export interface Match {
-id: string; // unique id
-date: string; // ISO date
-a: PlayerId;
-b: PlayerId;
-scoreA: number;
-scoreB: number;
+  id: string; // unique id
+  date: string; // ISO date
+  a: PlayerId;
+  b: PlayerId;
+  scoreA: number;
+  scoreB: number;
 }
 
 
-export interface Session { // triangle de matchs (3 matches)
-id: string; // unique id
-date: string; // ISO date
-matches: Match[]; // exactement 3
-notes?: string;
+export interface Session {
+  id: string; // unique id
+  date: string; // ISO date
+  matches: Match[]; // N'est plus limité à 3
+  notes?: string;
 }
 
 
 export interface Totals {
-player: PlayerId;
-played: number;
-wins: number;
-losses: number;
-pointsFor: number;
-pointsAgainst: number;
-diff: number;
+  player: PlayerId;
+  played: number;
+  wins: number;
+  losses: number;
+  // Les champs manquants ont été ajoutés ici :
+  pointsFor: number;
+  pointsAgainst: number;
+  diff: number;
 }
