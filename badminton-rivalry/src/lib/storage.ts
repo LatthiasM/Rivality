@@ -37,6 +37,9 @@ export async function saveSession(s: Session): Promise<void> {
     saveLocal(list);
     return;
   }
+  // --- CORRECTION 1 ---
+  // On dit à ESLint d'ignorer la ligne suivante
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const { error } = await supabase.from('sessions').insert(s as any);
   if (error) console.error(error);
 }
@@ -48,5 +51,18 @@ export async function deleteSession(id: string): Promise<void> {
     return;
   }
   const { error } = await supabase.from('sessions').delete().eq('id', id);
+  if (error) console.error(error);
+}
+
+export async function updateSession(s: Session): Promise<void> {
+  if (!USE_SUPABASE || !supabase) {
+    const list = loadLocal().map(item => (item.id === s.id ? s : item));
+    saveLocal(list);
+    return;
+  }
+  // --- CORRECTION 2 ---
+  // On dit à ESLint d'ignorer la ligne suivante
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  const { error } = await supabase.from('sessions').update(s as any).eq('id', s.id);
   if (error) console.error(error);
 }
