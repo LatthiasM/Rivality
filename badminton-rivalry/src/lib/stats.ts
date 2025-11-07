@@ -1,4 +1,4 @@
-import { Match, PlayerId, Session, Totals } from '../types';
+import { Match, PlayerId, Session, Totals, PlayerH2HStats, H2HMatchup } from '../types';
 
 export function computeTotals(sessions: Session[]): Totals[] {
   const map = new Map<PlayerId, Totals>();
@@ -62,4 +62,77 @@ export function newMatch(dateISO: string, a: PlayerId, b: PlayerId): Match {
     scoreA: 0,
     scoreB: 0,
   };
+}
+
+export function computePlayerH2H(player: PlayerId, sessions: Session[]): PlayerH2HStats {
+  const stats: PlayerH2HStats = {
+    player,
+    totalWins: 0,
+    totalLosses: 0,
+    totalPlayed: 0,
+    totalDiff: 0,
+    matchups: [],
+  };
+
+  // Map pour stocker les stats par adversaire
+  const map = new Map<PlayerId, H2HMatchup>();
+
+  // Fonction interne pour obtenir ou créer un adversaire dans le map
+  function getOpponent(name: PlayerId): H2HMatchup {
+    if (!map.has(name)) {
+      map.set(name, {
+        opponent: name,
+        wins: 0,
+        losses: 0,
+        pointsFor: 0,
+        pointsAgainst: 0,
+        played: 0,
+        diff: 0,
+      });
+    }
+    return map.get(name)!;
+  }
+
+  // On parcourt tous les matchs de toutes les sessions
+  for (const s of sessions) {
+    for (const m of s.matches) {
+      // Si notre joueur n'est pas dans ce match, on l'ignore
+      if (m.a !== player && m.b !== player) {
+        continue;
+      }
+
+      // Notre joueur est dans le match
+      stats.totalPlayed++;
+      
+      const isPlayerA = m.a === player;
+      const opponentName = isPlayerA ? m.b : m.a;
+      const opponent = getOpponent(opponentName); // On récupère l'adversaire
+
+      const playerScore = isPlayerA ? m.scoreA : m.scoreB;
+      const opponentScore = isPlayerA ? m.scoreB : m.scoreA;
+
+      opponent.played++;
+      opponent.pointsFor += playerScore;
+      opponent.pointsAgainst += opponentScore;
+
+      // On met à jour les victoires/défaites
+      if (playerScore > opponentScore) {
+        stats.totalWins++;
+        opponent.wins++;
+      } else if (opponentScore > playerScore) {
+        stats.totalLosses++;
+        opponent.losses++;
+      }
+    }
+  }
+
+  // Une fois tous les matchs comptés, on calcule les 'diff'
+  for (const matchup of map.values()) {
+    matchup.diff = matchup.pointsFor - matchup.pointsAgainst;
+    stats.totalDiff += matchup.diff;
+  }
+
+  // On trie les face-à-face (ex: par plus de victoires)
+  stats.matchups = Array.from(map.values()).sort((a,b) => b.wins - a.wins || b.diff - a.diff);
+  return stats;
 }

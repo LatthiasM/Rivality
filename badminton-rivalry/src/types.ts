@@ -30,3 +30,23 @@ export interface Totals {
   pointsAgainst: number;
   diff: number;
 }
+
+// --- Nouveaux types pour les stats H2H ---
+export interface H2HMatchup {
+  opponent: PlayerId;
+  wins: number;
+  losses: number;
+  pointsFor: number;
+  pointsAgainst: number;
+  played: number;
+  diff: number;
+}
+
+export interface PlayerH2HStats {
+  player: PlayerId;
+  totalWins: number;
+  totalLosses: number;
+  totalPlayed: number;
+  totalDiff: number;
+  matchups: H2HMatchup[];
+}

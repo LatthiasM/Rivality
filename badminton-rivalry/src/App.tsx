@@ -3,22 +3,22 @@ import './styles.css';
 import SessionForm from './components/SessionForm';
 import Leaderboard from './components/Leaderboard';
 import SessionList from './components/SessionList';
-import { Session } from './types';
+import { Session, PlayerId } from './types';
 import { computeTotals } from './lib/stats';
 import { loadSessions } from './lib/storage';
 import { Toaster } from 'react-hot-toast';
+import PlayerStatsModal from './components/PlayerStatsModal'; // <--- Importer le nouveau composant
 
 export default function App() {
   const [sessions, setSessions] = useState<Session[]>([]);
   const [loading, setLoading] = useState(true);
-  
-  // --- 1. NOUVEL ÉTAT ---
-  // Pour mémoriser la session qu'on est en train de modifier
   const [editingSession, setEditingSession] = useState<Session | null>(null);
-  
+  const [viewingPlayer, setViewingPlayer] = useState<PlayerId | null>(null);
+  const [showForm, setShowForm] = useState(false);
   const totals = useMemo(()=> computeTotals(sessions), [sessions]);
   const existingPlayers = useMemo(() => totals.map(t => t.player), [totals]);
 
+  // ... (useEffect, onSaved, onDeleted, handleEdit sont inchangés) ...
   useEffect(()=>{ 
     (async()=>{ 
       setLoading(true);
@@ -29,39 +29,32 @@ export default function App() {
     })(); 
   }, []);
 
-  // --- 2. FONCTION ONSAVED MODIFIÉE ---
-  // Gère à la fois la création et la mise à jour
   function onSaved(savedOrUpdatedSession: Session) {
     const exists = sessions.some(s => s.id === savedOrUpdatedSession.id);
-
     if (exists) {
-      // C'est une MISE À JOUR : on remplace l'ancienne version
       setSessions(prev => 
         prev.map(s => s.id === savedOrUpdatedSession.id ? savedOrUpdatedSession : s)
       );
     } else {
-      // C'est une NOUVELLE session : on l'ajoute au début
       setSessions(prev => [savedOrUpdatedSession, ...prev]);
     }
-    
-    // Dans les deux cas, on arrête le mode édition
     setEditingSession(null);
   }
 
   function onDeleted(id: string) {
     setSessions(prev => prev.filter(s => s.id !== id));
-    // Au cas où on supprime la session qu'on est en train de modifier
     if (editingSession?.id === id) {
       setEditingSession(null);
     }
   }
   
-  // --- 3. NOUVELLE FONCTION ---
-  // Appelée par SessionList quand on clique sur "Modifier"
   function handleEdit(session: Session) {
     setEditingSession(session);
-    // Bonus : on fait défiler la page vers le haut pour voir le formulaire
     window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+  
+  function handlePlayerClick(player: PlayerId) {
+    setViewingPlayer(player);
   }
 
   return (
@@ -73,28 +66,52 @@ export default function App() {
         <a className="btn" href="https://github.com/" target="_blank" rel="noreferrer">Exporter / Git</a>
       </header>
 
-      {/* --- 4. MODIFICATION DES PROPS DU FORMULAIRE --- */}
-      <SessionForm 
-        onSaved={onSaved} 
-        existingPlayers={existingPlayers} 
-        // On passe la session à modifier et une fonction pour annuler
-        sessionToEdit={editingSession}
-        onCancelEdit={() => setEditingSession(null)}
-      />
+            {/* On affiche le formulaire SEULEMENT si showForm est vrai OU si on est en mode édition */}
+      {(showForm || editingSession) ? (
+        <SessionForm
+          onSaved={onSaved}
+          existingPlayers={existingPlayers}
+          sessionToEdit={editingSession}
+          onCancelEdit={() => {
+            setEditingSession(null);
+            setShowForm(false); // On ferme aussi le formulaire
+          }}
+        />
+      ) : (
+        // Sinon, on affiche un simple bouton
+        <div className="card text-center">
+          <button
+            className="btn w-full font-medium"
+            onClick={() => setShowForm(true)}
+          >
+            + Ajouter une nouvelle séance
+          </button>
+        </div>
+      )}
       
-      <Leaderboard totals={totals} />
+      <Leaderboard 
+        totals={totals} 
+        onPlayerClick={handlePlayerClick} 
+      />
       
       {loading ? (
         <div className="card text-center text-gray-500">
           Chargement de l'historique...
         </div>
       ) : (
-        // --- 5. MODIFICATION DES PROPS DE LA LISTE ---
         <SessionList 
           sessions={sessions} 
           onDeleted={onDeleted}
-          // On passe la nouvelle fonction
           onEdit={handleEdit}
+        />
+      )}
+
+      {/* --- MODAL (remplace le texte de débogage) --- */}
+      {viewingPlayer && (
+        <PlayerStatsModal 
+          player={viewingPlayer}
+          allSessions={sessions}
+          onClose={() => setViewingPlayer(null)}
         />
       )}
 
