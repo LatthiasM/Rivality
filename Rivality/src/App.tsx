@@ -315,7 +315,7 @@ const LandingPage = () => {
             {/* Tier 1 */}
             <div className="p-8 rounded-3xl border border-slate-200 bg-white hover:border-purple-300 transition relative flex flex-col shadow-sm">
               <h4 className="text-lg font-bold text-slate-700 mb-2">Amateur</h4>
-              <p className="text-xs text-slate-400 uppercase tracking-wide font-bold mb-4">Jusqu'à 50 Joueurs</p>
+              <p className="text-xs text-slate-400 uppercase tracking-wide font-bold mb-4">Jusqu'à 500 Joueurs</p>
               <div className="flex items-baseline mb-6">
                 <span className="text-4xl font-extrabold text-slate-900">49€</span>
                 <span className="text-slate-500 ml-1">/ mois</span>
@@ -334,7 +334,7 @@ const LandingPage = () => {
             <div className="p-8 rounded-3xl border-2 border-purple-600 shadow-xl relative bg-slate-900 text-white transform md:-translate-y-4 flex flex-col">
               <div className="absolute top-0 right-0 bg-purple-600 text-white text-xs font-bold px-3 py-1 rounded-bl-lg">RECOMMANDÉ</div>
               <h4 className="text-lg font-bold text-white mb-2">Semi-Pro</h4>
-              <p className="text-xs text-purple-300 uppercase tracking-wide font-bold mb-4">50 à 200 Joueurs</p>
+              <p className="text-xs text-purple-300 uppercase tracking-wide font-bold mb-4">500 à 10000 Joueurs</p>
               <div className="flex items-baseline mb-6">
                 <span className="text-5xl font-extrabold text-white">89€</span>
                 <span className="text-purple-200 ml-1">/ mois</span>
@@ -352,7 +352,7 @@ const LandingPage = () => {
             {/* Tier 3 : Prestations */}
             <div className="p-8 rounded-3xl border border-slate-200 bg-white hover:border-purple-300 transition flex flex-col shadow-sm">
               <h4 className="text-lg font-bold text-slate-700 mb-2">Pro & Sur Mesure</h4>
-              <p className="text-xs text-slate-400 uppercase tracking-wide font-bold mb-4">+200 Joueurs</p>
+              <p className="text-xs text-slate-400 uppercase tracking-wide font-bold mb-4">+1000 Joueurs</p>
               <div className="flex items-baseline mb-6">
                 <span className="text-3xl font-bold text-slate-900">Sur Devis</span>
               </div>
@@ -385,9 +385,9 @@ const LandingPage = () => {
             </div>
             <select className="w-full p-3 rounded-lg border border-slate-300 bg-slate-50 outline-none focus:ring-2 focus:ring-purple-500 transition text-slate-600">
               <option>Taille du club...</option>
-              <option>Petit ( -50 )</option>
-              <option>Moyen ( 50-200 )</option>
-              <option>Grand ( +200 )</option>
+              <option>Petit ( -500 )</option>
+              <option>Moyen ( 500-10000 )</option>
+              <option>Grand ( +10000 )</option>
             </select>
             <textarea className="w-full p-3 rounded-lg border border-slate-300 bg-slate-50 outline-none focus:ring-2 focus:ring-purple-500 transition h-32" placeholder="Besoin d'une démo ou d'un développement spécifique ?"></textarea>
             <button className={`w-full py-3 rounded-xl font-bold text-white shadow-lg ${colors.primary} ${colors.primaryHover} transition`}>
