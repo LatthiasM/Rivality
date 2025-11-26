@@ -5,7 +5,7 @@ import { Toaster, toast } from 'react-hot-toast';
 import { supabase, loadGroups, createGroup } from './lib/storage';
 import { Group } from './types';
 
-// Import de tes composants existants (Assure-toi que les chemins sont bons)
+// Import de tes composants existants
 import Tracker from './components/Tracker'; 
 import GroupManagementModal from './components/GroupManagementModal';
 import MusculationTracker from './components/MusculationTracker';
@@ -41,7 +41,7 @@ function getSportIcon(sportType: string | null | undefined): string {
 }
 
 // ==========================================
-// 1. LANDING PAGE FINALE (OFFRE COMPLÈTE + FEATURES RESTAURÉES)
+// 1. LANDING PAGE : LE VESTIAIRE BY RIVALITY
 // ==========================================
 const LandingPage = () => {
   const [scrolled, setScrolled] = useState(false);
@@ -67,83 +67,91 @@ const LandingPage = () => {
       <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${scrolled ? 'bg-white/95 shadow-sm py-2' : 'bg-transparent py-4'}`}>
         <div className="max-w-7xl mx-auto px-6 flex justify-between items-center">
           <div className="flex items-center gap-2">
-            <h1 className={`text-xl font-bold ${scrolled ? 'text-slate-900' : 'text-white'} tracking-tight`}>
-              Rivality
+            <span className="text-3xl">🏟️</span> 
+            <h1 className={`text-xl font-bold ${scrolled ? 'text-slate-900' : 'text-white'} tracking-tight flex flex-col md:flex-row md:items-baseline`}>
+              Le Vestiaire
+              <span className={`text-xs font-medium ml-1 ${scrolled ? 'text-purple-600' : 'text-purple-300'}`}>by Rivality</span>
             </h1>
           </div>
           <div className="flex gap-6 items-center text-sm font-medium">
-            <a href="#solutions" className={`${scrolled ? 'text-slate-600' : 'text-slate-200'} hover:opacity-80 hidden md:block`}>Solutions</a>
-            <a href="#features" className={`${scrolled ? 'text-slate-600' : 'text-slate-200'} hover:opacity-80 hidden md:block`}>Fonctionnalités</a>
+            <a href="#solutions" className={`${scrolled ? 'text-slate-600' : 'text-slate-200'} hover:opacity-80 hidden md:block`}>Le Concept</a>
+            <a href="#features" className={`${scrolled ? 'text-slate-600' : 'text-slate-200'} hover:opacity-80 hidden md:block`}>Outils</a>
             <a href="#pricing" className={`${scrolled ? 'text-slate-600' : 'text-slate-200'} hover:opacity-80 hidden md:block`}>Tarifs</a>
             <Link to="/login" className={`btn ${colors.primary} text-white px-5 py-2 rounded-full transition-transform hover:scale-105 shadow-md border border-transparent`}>
-              Espace Club
+              Entrer dans Le Vestiaire
             </Link>
           </div>
         </div>
       </nav>
 
       {/* --- HERO SECTION --- */}
-      <header className="relative pt-32 pb-24 flex flex-col items-center text-center px-6 bg-cover bg-center">
-        <div className="absolute inset-0 bg-gradient-to-br from-purple-900/90 via-indigo-900/85 to-slate-900/90 z-0"></div>
+      <header className="relative pt-32 pb-24 flex flex-col items-center text-center px-6 bg-cover bg-center"
+              style={{backgroundImage: "url('https://images.unsplash.com/photo-1517649763962-0c623066013b?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80')"}}>
+        <div className="absolute inset-0 bg-gradient-to-br from-purple-900/95 via-indigo-900/90 to-slate-900/90 z-0"></div>
 
         <div className="relative z-10 max-w-5xl mt-8">
-          <div className="inline-block py-1 px-3 rounded-full bg-white/10 border border-white/20 text-purple-200 text-sm font-medium mb-6 backdrop-blur-sm">
-            🚀 La solution SaaS complète pour clubs & centres sportifs
+          <div className="inline-block py-1 px-4 rounded-full bg-white/10 border border-white/20 text-purple-200 text-sm font-medium mb-6 backdrop-blur-sm">
+            👕 Le QG numérique de votre club
           </div>
           <h2 className="text-4xl md:text-6xl font-black text-white mb-6 leading-tight">
-            Optimisez la Performance.<br/>
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-pink-400 to-purple-300">Boostez la Rétention.</span>
+            Gérez le Club.<br/>
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-pink-400 to-purple-300">Animez le Vestiaire.</span>
           </h2>
           <p className="text-lg md:text-xl text-purple-100 max-w-2xl mx-auto mb-10 font-light leading-relaxed">
-            Rivality offre aux entraîneurs les outils pour créer des champions, tout en fidélisant vos adhérents grâce à une expérience communautaire et gamifiée unique.
+            La solution Toulousaine qui réunit le sérieux de la gestion sportive et l'ambiance unique d'un groupe soudé. Performance pour le coach, Jeu pour les adhérents.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <a href="#pricing" className="btn text-base px-8 py-3 bg-white text-purple-900 rounded-full font-bold shadow-lg hover:bg-purple-50 transition">
-              Voir les offres Club
+              Rejoindre Le Vestiaire
             </a>
             <a href="#solutions" className="btn text-base px-8 py-3 bg-white/10 backdrop-blur-md border border-white/30 text-white rounded-full font-medium hover:bg-white/20 transition">
-              Découvrir la méthode
+              Visite guidée
             </a>
           </div>
           
           <div className="mt-12 flex justify-center items-center gap-6 text-slate-300 text-sm font-medium opacity-80">
-            <span className="flex items-center gap-2">💻 Ordinateur</span>
-            <span className="flex items-center gap-2">📱 Mobile</span>
-            <span className="flex items-center gap-2">📟 Tablette</span>
+            <span className="flex items-center gap-2">📱 App Mobile</span>
+            <span className="flex items-center gap-2">💻 Dashboard Coach</span>
+            <span className="flex items-center gap-2">🛡️ Données Sécurisées</span>
           </div>
         </div>
       </header>
 
-      {/* --- SOLUTIONS (2 AXES) --- */}
+      {/* --- PROPOSITION DE VALEUR (LE CONCEPT) --- */}
       <section id="solutions" className="py-20 px-6 bg-white relative z-10 -mt-8 rounded-t-3xl">
         <div className="max-w-6xl mx-auto">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+          <div className="text-center mb-16">
+            <h3 className={`text-sm font-bold uppercase tracking-wider mb-2 ${colors.textPrimary}`}>Double Impact</h3>
+            <h4 className="text-3xl font-bold text-slate-900">Tout se joue ici.</h4>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-stretch">
             
-            {/* Axe 1 : Performance */}
+            {/* Côté Bureau / Staff */}
             <div className="bg-slate-50 p-8 rounded-3xl border border-slate-100 shadow-sm hover:shadow-md transition">
-              <div className="w-12 h-12 bg-blue-100 text-blue-600 rounded-xl flex items-center justify-center text-2xl mb-6">📈</div>
-              <h3 className="text-2xl font-bold text-slate-900 mb-4">Performance & Préparation</h3>
-              <p className="text-slate-600 leading-relaxed mb-4">
-                Pour vos coachs. Une suite d'outils professionnels pour l'analyse de données, le suivi des records personnels et la planification précise des cycles d'entraînements.
+              <div className="w-12 h-12 bg-blue-100 text-blue-600 rounded-xl flex items-center justify-center text-2xl mb-6">📋</div>
+              <h3 className="text-2xl font-bold text-slate-900 mb-4">Pour le Staff : Le Bureau</h3>
+              <p className="text-slate-600 leading-relaxed mb-6">
+                Fini les tableaux Excel perdus. Centralisez toute la gestion administrative et sportive. Gagnez du temps pour ce qui compte : le terrain.
               </p>
-              <ul className="space-y-2 text-sm text-slate-700 font-medium">
-                <li className="flex items-center gap-2">✅ Planification des séances</li>
-                <li className="flex items-center gap-2">✅ Historique des records</li>
-                <li className="flex items-center gap-2">✅ Préparation aux compétitions</li>
+              <ul className="space-y-3 text-sm text-slate-700 font-medium bg-white p-4 rounded-xl">
+                <li className="flex items-center gap-3">✅ <strong>Planification :</strong> Séances, Matchs, Événements.</li>
+                <li className="flex items-center gap-3">✅ <strong>Suivi :</strong> Stats, Présences, Records.</li>
+                <li className="flex items-center gap-3">✅ <strong>Admin :</strong> Licences et cotisations.</li>
               </ul>
             </div>
 
-            {/* Axe 2 : Engagement */}
+            {/* Côté Vestiaire / Joueurs */}
             <div className="bg-slate-50 p-8 rounded-3xl border border-slate-100 shadow-sm hover:shadow-md transition">
               <div className="w-12 h-12 bg-purple-100 text-purple-600 rounded-xl flex items-center justify-center text-2xl mb-6">🔥</div>
-              <h3 className="text-2xl font-bold text-slate-900 mb-4">Engagement & Rétention</h3>
-              <p className="text-slate-600 leading-relaxed mb-4">
-                Pour vos adhérents. Transformez l'effort en jeu. Notre système de gamification et de communauté motive vos membres à revenir s'entraîner plus souvent.
+              <h3 className="text-2xl font-bold text-slate-900 mb-4">Pour les Joueurs : Le Vestiaire</h3>
+              <p className="text-slate-600 leading-relaxed mb-6">
+                Créez une communauté addictive. L'application motive vos adhérents à venir s'entraîner grâce à la gamification et aux défis.
               </p>
-              <ul className="space-y-2 text-sm text-slate-700 font-medium">
-                <li className="flex items-center gap-2">✅ Système d'Achievements</li>
-                <li className="flex items-center gap-2">✅ Défis & Challenges Club</li>
-                <li className="flex items-center gap-2">✅ Renforcement Communautaire</li>
+              <ul className="space-y-3 text-sm text-slate-700 font-medium bg-white p-4 rounded-xl">
+                <li className="flex items-center gap-3">🏆 <strong>Gamification :</strong> Badges et niveaux à débloquer.</li>
+                <li className="flex items-center gap-3">⚔️ <strong>Rivalité :</strong> Comparaison de stats entre amis.</li>
+                <li className="flex items-center gap-3">💬 <strong>Social :</strong> Mur du club et sondages.</li>
               </ul>
             </div>
 
@@ -151,132 +159,132 @@ const LandingPage = () => {
         </div>
       </section>
 
-      {/* --- FONCTIONNALITÉS CLÉS (GRID COMPLÈTE RESTAURÉE) --- */}
+      {/* --- FONCTIONNALITÉS CLÉS (GRID COMPLÈTE) --- */}
       <section id="features" className={`py-20 px-6 ${colors.bgLight}`}>
         <div className="max-w-6xl mx-auto">
           <div className="text-center mb-16">
-            <h3 className={`text-sm font-bold uppercase tracking-wider mb-2 ${colors.textPrimary}`}>Tout-en-un</h3>
-            <h4 className="text-3xl font-bold text-slate-900">Une suite complète pour votre club</h4>
+            <h3 className={`text-sm font-bold uppercase tracking-wider mb-2 ${colors.textPrimary}`}>Boîte à outils</h3>
+            <h4 className="text-3xl font-bold text-slate-900">L'équipement complet du club moderne</h4>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
             
             {/* 1. Agenda */}
-            <div className="bg-white p-6 rounded-2xl shadow-sm border border-slate-100 hover:border-purple-200 transition">
-              <div className="text-3xl mb-4">📅</div>
-              <h5 className="font-bold text-slate-800 text-lg mb-2">Gestion d'Agenda</h5>
+            <div className="bg-white p-6 rounded-2xl shadow-sm border border-slate-100 hover:border-purple-200 transition group">
+              <div className="text-3xl mb-4 group-hover:scale-110 transition-transform">📅</div>
+              <h5 className="font-bold text-slate-800 text-lg mb-2">Agenda Partagé</h5>
               <p className="text-slate-500 text-sm leading-relaxed">
-                Planifiez séances et événements. Synchronisation des disponibilités coachs/joueurs.
+                Synchronisation automatique des matchs et entraînements sur les téléphones des joueurs.
               </p>
             </div>
 
             {/* 2. Messagerie */}
-            <div className="bg-white p-6 rounded-2xl shadow-sm border border-slate-100 hover:border-purple-200 transition">
-              <div className="text-3xl mb-4">💬</div>
-              <h5 className="font-bold text-slate-800 text-lg mb-2">Messagerie Intégrée</h5>
+            <div className="bg-white p-6 rounded-2xl shadow-sm border border-slate-100 hover:border-purple-200 transition group">
+              <div className="text-3xl mb-4 group-hover:scale-110 transition-transform">💬</div>
+              <h5 className="font-bold text-slate-800 text-lg mb-2">Causerie / Chat</h5>
               <p className="text-slate-500 text-sm leading-relaxed">
-                Canaux de discussion directs et sécurisés entre le staff et les adhérents.
+                Canaux de discussion sécurisés (Coach-Joueurs, Groupe complet) pour les infos officielles.
               </p>
             </div>
 
             {/* 3. Gamification */}
-            <div className="bg-white p-6 rounded-2xl shadow-sm border border-slate-100 hover:border-purple-200 transition">
-              <div className="text-3xl mb-4">🏆</div>
-              <h5 className="font-bold text-slate-800 text-lg mb-2">Gamification</h5>
+            <div className="bg-white p-6 rounded-2xl shadow-sm border border-slate-100 hover:border-purple-200 transition group">
+              <div className="text-3xl mb-4 group-hover:scale-110 transition-transform">🏅</div>
+              <h5 className="font-bold text-slate-800 text-lg mb-2">Trophées Club</h5>
               <p className="text-slate-500 text-sm leading-relaxed">
-                Badges, niveaux et défis mensuels pour créer une émulation positive.
+                "Le Pilier", "Le Goleador"... Des récompenses automatiques pour valoriser l'assiduité.
               </p>
             </div>
 
             {/* 4. Perf */}
-            <div className="bg-white p-6 rounded-2xl shadow-sm border border-slate-100 hover:border-purple-200 transition">
-              <div className="text-3xl mb-4">📊</div>
-              <h5 className="font-bold text-slate-800 text-lg mb-2">Suivi Performance</h5>
+            <div className="bg-white p-6 rounded-2xl shadow-sm border border-slate-100 hover:border-purple-200 transition group">
+              <div className="text-3xl mb-4 group-hover:scale-110 transition-transform">📊</div>
+              <h5 className="font-bold text-slate-800 text-lg mb-2">Data Performance</h5>
               <p className="text-slate-500 text-sm leading-relaxed">
-                Tableaux de bord détaillés de progression physique et technique par athlète.
+                Suivi précis de la progression (Temps, Poids, Scores) adapté à chaque sport.
               </p>
             </div>
 
-            {/* 5. Covoiturage (RESTAURÉ) */}
-            <div className="bg-white p-6 rounded-2xl shadow-sm border border-slate-100 hover:border-purple-200 transition">
-              <div className="text-3xl mb-4">🚗</div>
-              <h5 className="font-bold text-slate-800 text-lg mb-2">Module Covoiturage</h5>
+            {/* 5. Covoiturage */}
+            <div className="bg-white p-6 rounded-2xl shadow-sm border border-slate-100 hover:border-purple-200 transition group">
+              <div className="text-3xl mb-4 group-hover:scale-110 transition-transform">🚗</div>
+              <h5 className="font-bold text-slate-800 text-lg mb-2">Covoiturage</h5>
               <p className="text-slate-500 text-sm leading-relaxed">
-                Organisez les déplacements en un clic directement depuis les convocations.
+                Module intégré aux convocations : "Qui a une place ?" réglé en un clic.
               </p>
             </div>
 
-            {/* 6. Administratif (RESTAURÉ) */}
-            <div className="bg-white p-6 rounded-2xl shadow-sm border border-slate-100 hover:border-purple-200 transition">
-              <div className="text-3xl mb-4">📁</div>
+            {/* 6. Administratif */}
+            <div className="bg-white p-6 rounded-2xl shadow-sm border border-slate-100 hover:border-purple-200 transition group">
+              <div className="text-3xl mb-4 group-hover:scale-110 transition-transform">📁</div>
               <h5 className="font-bold text-slate-800 text-lg mb-2">Administratif</h5>
               <p className="text-slate-500 text-sm leading-relaxed">
-                Centralisez les licences, certificats médicaux et cotisations en un seul endroit.
+                Suivi des certificats médicaux, tailles de maillots et paiements des cotisations.
               </p>
             </div>
 
-            {/* 7. Météo (RESTAURÉ) */}
-            <div className="bg-white p-6 rounded-2xl shadow-sm border border-slate-100 hover:border-purple-200 transition">
-              <div className="text-3xl mb-4">🌦️</div>
+            {/* 7. Météo */}
+            <div className="bg-white p-6 rounded-2xl shadow-sm border border-slate-100 hover:border-purple-200 transition group">
+              <div className="text-3xl mb-4 group-hover:scale-110 transition-transform">🌦️</div>
               <h5 className="font-bold text-slate-800 text-lg mb-2">Météo Terrain</h5>
               <p className="text-slate-500 text-sm leading-relaxed">
-                Alertes automatiques sur la praticabilité des terrains pour éviter les surprises.
+                Alertes automatiques en cas de pluie ou impraticabilité du terrain.
               </p>
             </div>
 
             {/* 8. Multi-Device */}
-             <div className="bg-white p-6 rounded-2xl shadow-sm border border-slate-100 hover:border-purple-200 transition flex flex-col justify-center">
-              <div className="text-3xl mb-4">📱</div>
+             <div className="bg-white p-6 rounded-2xl shadow-sm border border-slate-100 hover:border-purple-200 transition group">
+              <div className="text-3xl mb-4 group-hover:scale-110 transition-transform">📱</div>
               <h5 className="font-bold text-slate-800 text-lg mb-2">100% Mobile</h5>
               <p className="text-slate-500 text-sm leading-relaxed">
-                Une expérience fluide sur PC, tablette et smartphone pour tous.
+                Accessible partout. Au bureau, dans le bus ou sur le banc de touche.
               </p>
             </div>
           </div>
         </div>
       </section>
 
-      {/* --- TARIFICATION (PAR TRANCHES) --- */}
+      {/* --- TARIFICATION --- */}
       <section id="pricing" className="py-20 px-6 bg-white">
         <div className="max-w-5xl mx-auto">
           <div className="text-center mb-16">
-            <h3 className="text-3xl font-bold text-slate-900">Une tarification qui évolue avec vous</h3>
-            <p className="text-slate-600 mt-2">Abonnement mensuel sans engagement.</p>
+            <h3 className="text-3xl font-bold text-slate-900">Abonnements Club</h3>
+            <p className="text-slate-600 mt-2">Tarification mensuelle simple, basée sur la taille de votre Vestiaire.</p>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             
             {/* Tier 1 */}
             <div className="p-8 rounded-3xl border border-slate-200 hover:border-purple-300 transition relative flex flex-col">
-              <h4 className="text-lg font-bold text-slate-700 mb-2">Démarrage</h4>
-              <p className="text-xs text-slate-400 uppercase tracking-wide font-bold mb-4">Jusqu'à 50 Adhérents</p>
+              <h4 className="text-lg font-bold text-slate-700 mb-2">Amateur</h4>
+              <p className="text-xs text-slate-400 uppercase tracking-wide font-bold mb-4">Jusqu'à 50 Joueurs</p>
               <div className="flex items-baseline mb-6">
                 <span className="text-4xl font-extrabold text-slate-900">49€</span>
                 <span className="text-slate-500 ml-1">/ mois</span>
               </div>
               <ul className="space-y-3 mb-8 text-sm text-slate-600 flex-1">
-                <li>✓ Accès complet</li>
+                <li>✓ Accès "Le Vestiaire" complet</li>
                 <li>✓ App Coach & Joueur</li>
                 <li>✓ Support Email</li>
               </ul>
               <Link to="/login" className="block w-full py-2.5 rounded-xl text-center font-bold text-purple-700 bg-purple-50 hover:bg-purple-100 transition">
-                Essayer
+                Essayer Gratuitement
               </Link>
             </div>
 
             {/* Tier 2 */}
             <div className="p-8 rounded-3xl border-2 border-purple-600 shadow-xl relative bg-slate-900 text-white transform md:-translate-y-4 flex flex-col">
-              <div className="absolute top-0 right-0 bg-purple-600 text-white text-xs font-bold px-3 py-1 rounded-bl-lg">POPULAIRE</div>
-              <h4 className="text-lg font-bold text-white mb-2">Croissance</h4>
-              <p className="text-xs text-purple-300 uppercase tracking-wide font-bold mb-4">50 à 200 Adhérents</p>
+              <div className="absolute top-0 right-0 bg-purple-600 text-white text-xs font-bold px-3 py-1 rounded-bl-lg">RECOMMANDÉ</div>
+              <h4 className="text-lg font-bold text-white mb-2">Semi-Pro</h4>
+              <p className="text-xs text-purple-300 uppercase tracking-wide font-bold mb-4">50 à 200 Joueurs</p>
               <div className="flex items-baseline mb-6">
                 <span className="text-5xl font-extrabold text-white">89€</span>
                 <span className="text-purple-200 ml-1">/ mois</span>
               </div>
               <ul className="space-y-3 mb-8 text-sm text-slate-300 flex-1">
-                <li>✓ Tout "Démarrage"</li>
-                <li>✓ Support Prioritaire</li>
-                <li>✓ Import de données offert</li>
+                <li>✓ Tout le pack "Amateur"</li>
+                <li>✓ Support Prioritaire (Tel)</li>
+                <li>✓ Aide à la configuration</li>
               </ul>
               <Link to="/login" className="block w-full py-3 rounded-xl text-center font-bold text-purple-900 bg-white hover:bg-slate-100 transition">
                 Choisir cette offre
@@ -285,19 +293,19 @@ const LandingPage = () => {
 
             {/* Tier 3 : Prestations */}
             <div className="p-8 rounded-3xl border border-slate-200 bg-slate-50 hover:border-purple-300 transition flex flex-col">
-              <h4 className="text-lg font-bold text-slate-700 mb-2">Sur Mesure</h4>
-              <p className="text-xs text-slate-400 uppercase tracking-wide font-bold mb-4">+200 Adhérents</p>
+              <h4 className="text-lg font-bold text-slate-700 mb-2">Pro & Sur Mesure</h4>
+              <p className="text-xs text-slate-400 uppercase tracking-wide font-bold mb-4">+200 Joueurs</p>
               <div className="flex items-baseline mb-6">
                 <span className="text-3xl font-bold text-slate-900">Sur Devis</span>
               </div>
               <div className="mb-6 flex-1">
-                <p className="text-sm font-bold text-purple-700 mb-2">Besoin de personnalisation ?</p>
+                <p className="text-sm font-bold text-purple-700 mb-2">Besoin d'extensions ?</p>
                 <p className="text-sm text-slate-600 leading-snug">
-                  Notre équipe développe des modules spécifiques pour votre club (API, Stats sur mesure) sous forme de prestation de service.
+                  Notre équipe technique peut développer des modules spécifiques (API, Stats avancées) pour votre structure.
                 </p>
               </div>
               <a href="#contact" className="block w-full py-2.5 rounded-xl text-center font-bold text-slate-700 border border-slate-300 hover:bg-white transition">
-                Demander un devis
+                Contacter l'équipe
               </a>
             </div>
 
@@ -309,23 +317,23 @@ const LandingPage = () => {
       <section id="contact" className="py-20 px-6 bg-slate-50">
         <div className="max-w-2xl mx-auto bg-white p-8 rounded-3xl shadow-sm border border-slate-100">
           <div className="text-center mb-8">
-            <h3 className="text-2xl font-bold text-slate-900">Demander une démo ou un devis</h3>
-            <p className="text-slate-500 text-sm mt-2">Notre équipe basée à Toulouse vous répond sous 24h.</p>
+            <h3 className="text-2xl font-bold text-slate-900">Contactez le Staff</h3>
+            <p className="text-slate-500 text-sm mt-2">Une question ? Une démo ? On vous répond sous 24h.</p>
           </div>
-          <form className="space-y-4" onSubmit={(e) => { e.preventDefault(); alert("Demande envoyée !"); }}>
+          <form className="space-y-4" onSubmit={(e) => { e.preventDefault(); alert("Message envoyé au vestiaire !"); }}>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               <input type="text" className="w-full p-3 rounded-lg border border-slate-300 bg-slate-50 outline-none focus:ring-2 focus:ring-purple-500 transition" placeholder="Nom du Club" />
               <input type="email" className="w-full p-3 rounded-lg border border-slate-300 bg-slate-50 outline-none focus:ring-2 focus:ring-purple-500 transition" placeholder="Email contact" />
             </div>
             <select className="w-full p-3 rounded-lg border border-slate-300 bg-slate-50 outline-none focus:ring-2 focus:ring-purple-500 transition text-slate-600">
-              <option>Nombre d'adhérents...</option>
-              <option>Moins de 50</option>
-              <option>50 - 200</option>
-              <option>Plus de 200</option>
+              <option>Taille du club...</option>
+              <option>Petit ( -50 )</option>
+              <option>Moyen ( 50-200 )</option>
+              <option>Grand ( +200 )</option>
             </select>
-            <textarea className="w-full p-3 rounded-lg border border-slate-300 bg-slate-50 outline-none focus:ring-2 focus:ring-purple-500 transition h-32" placeholder="Un besoin spécifique ? Une demande de personnalisation ?"></textarea>
+            <textarea className="w-full p-3 rounded-lg border border-slate-300 bg-slate-50 outline-none focus:ring-2 focus:ring-purple-500 transition h-32" placeholder="Besoin d'une démo ou d'un développement spécifique ?"></textarea>
             <button className={`w-full py-3 rounded-xl font-bold text-white shadow-lg ${colors.primary} ${colors.primaryHover} transition`}>
-              Envoyer ma demande
+              Envoyer au Staff
             </button>
           </form>
         </div>
@@ -333,7 +341,7 @@ const LandingPage = () => {
 
       {/* --- FOOTER --- */}
       <footer className="py-8 px-6 bg-slate-900 text-center text-slate-500 text-sm">
-        <p className="mb-2">© 2025 Rivality. Développé avec passion à Toulouse 🧱.</p>
+        <p className="mb-2">© 2025 Le Vestiaire by Rivality. Fait avec passion à Toulouse 🧱.</p>
         <div className="flex justify-center gap-4 text-xs">
           <a href="#" className="hover:text-purple-400">Mentions Légales</a>
           <a href="#" className="hover:text-purple-400">CGV</a>
@@ -356,16 +364,16 @@ const Login = () => {
   return (
     <div className="min-h-screen flex items-center justify-center bg-slate-100 p-4">
       <div className="card max-w-md w-full text-center p-8 bg-white shadow-xl rounded-2xl">
-        <h1 className="text-3xl font-bold mb-2">Bienvenue</h1>
-        <p className="text-gray-500 mb-8">Connectez-vous pour accéder à votre espace.</p>
+        <h1 className="text-3xl font-bold mb-2">Le Vestiaire</h1>
+        <p className="text-gray-500 mb-8">Connectez-vous pour accéder à votre espace club.</p>
         <button
-          className="btn w-full bg-blue-600 text-white hover:bg-blue-700 py-3 rounded-lg flex items-center justify-center gap-2"
+          className="btn w-full bg-purple-700 text-white hover:bg-purple-800 py-3 rounded-lg flex items-center justify-center gap-2"
           onClick={handleLogin}
         >
           <span>G</span> Se connecter avec Google
         </button>
         <div className="mt-6 text-sm">
-          <Link to="/" className="text-blue-500 hover:underline">← Retour à l'accueil</Link>
+          <Link to="/" className="text-purple-600 hover:underline">← Retour à l'accueil</Link>
         </div>
       </div>
     </div>
@@ -571,19 +579,15 @@ export default function App() {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    // 1. Récupérer la session actuelle
     supabase?.auth.getSession().then(({ data: { session } }) => {
       setSession(session);
       setLoading(false);
     });
 
-    // 2. Écouter les changements d'auth ET capturer la souscription
-    // L'opérateur '??' gère le cas où supabase serait null
     const { data } = supabase?.auth.onAuthStateChange((_event, session) => {
       setSession(session);
     }) ?? { data: null };
 
-    // 3. Nettoyage : Se désabonner proprement
     return () => {
       data?.subscription.unsubscribe();
     };
