@@ -41,7 +41,7 @@ function getSportIcon(sportType: string | null | undefined): string {
 }
 
 // ==========================================
-// 1. NOUVELLE LANDING PAGE (VERSION ÉQUIPE RIVALITY)
+// 1. LANDING PAGE FINALE (OFFRE COMPLÈTE + FEATURES RESTAURÉES)
 // ==========================================
 const LandingPage = () => {
   const [scrolled, setScrolled] = useState(false);
@@ -53,7 +53,6 @@ const LandingPage = () => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  // Palette Violette Toulouse conservée pour l'identité
   const colors = {
     primary: "bg-purple-800",
     primaryHover: "hover:bg-purple-900",
@@ -68,7 +67,6 @@ const LandingPage = () => {
       <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${scrolled ? 'bg-white/95 shadow-sm py-2' : 'bg-transparent py-4'}`}>
         <div className="max-w-7xl mx-auto px-6 flex justify-between items-center">
           <div className="flex items-center gap-2">
-            <span className="text-2xl"></span> 
             <h1 className={`text-xl font-bold ${scrolled ? 'text-slate-900' : 'text-white'} tracking-tight`}>
               Rivality
             </h1>
@@ -84,7 +82,7 @@ const LandingPage = () => {
         </div>
       </nav>
 
-      {/* --- HERO SECTION : PERFORMANCE & ENGAGEMENT --- */}
+      {/* --- HERO SECTION --- */}
       <header className="relative pt-32 pb-24 flex flex-col items-center text-center px-6 bg-cover bg-center">
         <div className="absolute inset-0 bg-gradient-to-br from-purple-900/90 via-indigo-900/85 to-slate-900/90 z-0"></div>
 
@@ -108,7 +106,6 @@ const LandingPage = () => {
             </a>
           </div>
           
-          {/* Badge Multi-plateforme */}
           <div className="mt-12 flex justify-center items-center gap-6 text-slate-300 text-sm font-medium opacity-80">
             <span className="flex items-center gap-2">💻 Ordinateur</span>
             <span className="flex items-center gap-2">📱 Mobile</span>
@@ -117,7 +114,7 @@ const LandingPage = () => {
         </div>
       </header>
 
-      {/* --- PROPOSITION DE VALEUR (2 AXES) --- */}
+      {/* --- SOLUTIONS (2 AXES) --- */}
       <section id="solutions" className="py-20 px-6 bg-white relative z-10 -mt-8 rounded-t-3xl">
         <div className="max-w-6xl mx-auto">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
@@ -154,93 +151,121 @@ const LandingPage = () => {
         </div>
       </section>
 
-      {/* --- FONCTIONNALITÉS CLÉS --- */}
+      {/* --- FONCTIONNALITÉS CLÉS (GRID COMPLÈTE RESTAURÉE) --- */}
       <section id="features" className={`py-20 px-6 ${colors.bgLight}`}>
         <div className="max-w-6xl mx-auto">
           <div className="text-center mb-16">
             <h3 className={`text-sm font-bold uppercase tracking-wider mb-2 ${colors.textPrimary}`}>Tout-en-un</h3>
-            <h4 className="text-3xl font-bold text-slate-900">Une plateforme unique pour Coachs & Adhérents</h4>
+            <h4 className="text-3xl font-bold text-slate-900">Une suite complète pour votre club</h4>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {/* Gestion Agenda */}
-            <div className="bg-white p-6 rounded-2xl shadow-sm border border-slate-100">
-              <div className="text-4xl mb-4">📅</div>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+            
+            {/* 1. Agenda */}
+            <div className="bg-white p-6 rounded-2xl shadow-sm border border-slate-100 hover:border-purple-200 transition">
+              <div className="text-3xl mb-4">📅</div>
               <h5 className="font-bold text-slate-800 text-lg mb-2">Gestion d'Agenda</h5>
               <p className="text-slate-500 text-sm leading-relaxed">
-                Planifiez vos séances, gérez les événements du club et visualisez les disponibilités des coachs en temps réel.
+                Planifiez séances et événements. Synchronisation des disponibilités coachs/joueurs.
               </p>
             </div>
 
-            {/* Messagerie */}
-            <div className="bg-white p-6 rounded-2xl shadow-sm border border-slate-100">
-              <div className="text-4xl mb-4">💬</div>
+            {/* 2. Messagerie */}
+            <div className="bg-white p-6 rounded-2xl shadow-sm border border-slate-100 hover:border-purple-200 transition">
+              <div className="text-3xl mb-4">💬</div>
               <h5 className="font-bold text-slate-800 text-lg mb-2">Messagerie Intégrée</h5>
               <p className="text-slate-500 text-sm leading-relaxed">
-                Fluidifiez la communication. Canaux directs entre administrateurs, coachs et membres sans quitter l'application.
+                Canaux de discussion directs et sécurisés entre le staff et les adhérents.
               </p>
             </div>
 
-            {/* Gamification */}
-            <div className="bg-white p-6 rounded-2xl shadow-sm border border-slate-100">
-              <div className="text-4xl mb-4">🏆</div>
+            {/* 3. Gamification */}
+            <div className="bg-white p-6 rounded-2xl shadow-sm border border-slate-100 hover:border-purple-200 transition">
+              <div className="text-3xl mb-4">🏆</div>
               <h5 className="font-bold text-slate-800 text-lg mb-2">Gamification</h5>
               <p className="text-slate-500 text-sm leading-relaxed">
-                Débloquez des badges, lancez des défis mensuels et créez une émulation positive au sein de votre structure.
+                Badges, niveaux et défis mensuels pour créer une émulation positive.
               </p>
             </div>
 
-            {/* Suivi Perf */}
-            <div className="bg-white p-6 rounded-2xl shadow-sm border border-slate-100">
-              <div className="text-4xl mb-4">📊</div>
-              <h5 className="font-bold text-slate-800 text-lg mb-2">Analyse de Performance</h5>
+            {/* 4. Perf */}
+            <div className="bg-white p-6 rounded-2xl shadow-sm border border-slate-100 hover:border-purple-200 transition">
+              <div className="text-3xl mb-4">📊</div>
+              <h5 className="font-bold text-slate-800 text-lg mb-2">Suivi Performance</h5>
               <p className="text-slate-500 text-sm leading-relaxed">
-                Tableaux de bord détaillés pour suivre la progression physique et technique de chaque athlète.
+                Tableaux de bord détaillés de progression physique et technique par athlète.
               </p>
             </div>
 
-             {/* Multi-Device */}
-             <div className="bg-white p-6 rounded-2xl shadow-sm border border-slate-100 md:col-span-2 flex flex-col justify-center items-center text-center">
-              <div className="text-4xl mb-4">📱 💻</div>
-              <h5 className="font-bold text-slate-800 text-lg mb-2">100% Multi-plateforme</h5>
-              <p className="text-slate-500 text-sm leading-relaxed max-w-md">
-                Accessible partout. Que vous soyez au bureau sur PC, ou au bord du terrain sur tablette ou smartphone.
+            {/* 5. Covoiturage (RESTAURÉ) */}
+            <div className="bg-white p-6 rounded-2xl shadow-sm border border-slate-100 hover:border-purple-200 transition">
+              <div className="text-3xl mb-4">🚗</div>
+              <h5 className="font-bold text-slate-800 text-lg mb-2">Module Covoiturage</h5>
+              <p className="text-slate-500 text-sm leading-relaxed">
+                Organisez les déplacements en un clic directement depuis les convocations.
+              </p>
+            </div>
+
+            {/* 6. Administratif (RESTAURÉ) */}
+            <div className="bg-white p-6 rounded-2xl shadow-sm border border-slate-100 hover:border-purple-200 transition">
+              <div className="text-3xl mb-4">📁</div>
+              <h5 className="font-bold text-slate-800 text-lg mb-2">Administratif</h5>
+              <p className="text-slate-500 text-sm leading-relaxed">
+                Centralisez les licences, certificats médicaux et cotisations en un seul endroit.
+              </p>
+            </div>
+
+            {/* 7. Météo (RESTAURÉ) */}
+            <div className="bg-white p-6 rounded-2xl shadow-sm border border-slate-100 hover:border-purple-200 transition">
+              <div className="text-3xl mb-4">🌦️</div>
+              <h5 className="font-bold text-slate-800 text-lg mb-2">Météo Terrain</h5>
+              <p className="text-slate-500 text-sm leading-relaxed">
+                Alertes automatiques sur la praticabilité des terrains pour éviter les surprises.
+              </p>
+            </div>
+
+            {/* 8. Multi-Device */}
+             <div className="bg-white p-6 rounded-2xl shadow-sm border border-slate-100 hover:border-purple-200 transition flex flex-col justify-center">
+              <div className="text-3xl mb-4">📱</div>
+              <h5 className="font-bold text-slate-800 text-lg mb-2">100% Mobile</h5>
+              <p className="text-slate-500 text-sm leading-relaxed">
+                Une expérience fluide sur PC, tablette et smartphone pour tous.
               </p>
             </div>
           </div>
         </div>
       </section>
 
-      {/* --- TARIFICATION (MODÈLE ÉCONOMIQUE) --- */}
+      {/* --- TARIFICATION (PAR TRANCHES) --- */}
       <section id="pricing" className="py-20 px-6 bg-white">
         <div className="max-w-5xl mx-auto">
           <div className="text-center mb-16">
-            <h3 className="text-3xl font-bold text-slate-900">Une tarification adaptée à votre taille</h3>
-            <p className="text-slate-600 mt-2">Abonnement mensuel sans engagement. Évolue avec votre club.</p>
+            <h3 className="text-3xl font-bold text-slate-900">Une tarification qui évolue avec vous</h3>
+            <p className="text-slate-600 mt-2">Abonnement mensuel sans engagement.</p>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             
-            {/* Tier 1 : Petit Club */}
-            <div className="p-8 rounded-3xl border border-slate-200 hover:border-purple-300 transition relative">
+            {/* Tier 1 */}
+            <div className="p-8 rounded-3xl border border-slate-200 hover:border-purple-300 transition relative flex flex-col">
               <h4 className="text-lg font-bold text-slate-700 mb-2">Démarrage</h4>
               <p className="text-xs text-slate-400 uppercase tracking-wide font-bold mb-4">Jusqu'à 50 Adhérents</p>
               <div className="flex items-baseline mb-6">
                 <span className="text-4xl font-extrabold text-slate-900">49€</span>
                 <span className="text-slate-500 ml-1">/ mois</span>
               </div>
-              <ul className="space-y-3 mb-8 text-sm text-slate-600">
-                <li>✓ Toutes les fonctionnalités</li>
+              <ul className="space-y-3 mb-8 text-sm text-slate-600 flex-1">
+                <li>✓ Accès complet</li>
+                <li>✓ App Coach & Joueur</li>
                 <li>✓ Support Email</li>
-                <li>✓ App Coach & Adhérent</li>
               </ul>
               <Link to="/login" className="block w-full py-2.5 rounded-xl text-center font-bold text-purple-700 bg-purple-50 hover:bg-purple-100 transition">
                 Essayer
               </Link>
             </div>
 
-            {/* Tier 2 : Club Moyen (Mise en avant) */}
-            <div className="p-8 rounded-3xl border-2 border-purple-600 shadow-xl relative bg-slate-900 text-white transform md:-translate-y-4">
+            {/* Tier 2 */}
+            <div className="p-8 rounded-3xl border-2 border-purple-600 shadow-xl relative bg-slate-900 text-white transform md:-translate-y-4 flex flex-col">
               <div className="absolute top-0 right-0 bg-purple-600 text-white text-xs font-bold px-3 py-1 rounded-bl-lg">POPULAIRE</div>
               <h4 className="text-lg font-bold text-white mb-2">Croissance</h4>
               <p className="text-xs text-purple-300 uppercase tracking-wide font-bold mb-4">50 à 200 Adhérents</p>
@@ -248,31 +273,31 @@ const LandingPage = () => {
                 <span className="text-5xl font-extrabold text-white">89€</span>
                 <span className="text-purple-200 ml-1">/ mois</span>
               </div>
-              <ul className="space-y-3 mb-8 text-sm text-slate-300">
-                <li>✓ Toutes les fonctionnalités</li>
+              <ul className="space-y-3 mb-8 text-sm text-slate-300 flex-1">
+                <li>✓ Tout "Démarrage"</li>
                 <li>✓ Support Prioritaire</li>
-                <li>✓ Importation de données offerte</li>
+                <li>✓ Import de données offert</li>
               </ul>
               <Link to="/login" className="block w-full py-3 rounded-xl text-center font-bold text-purple-900 bg-white hover:bg-slate-100 transition">
                 Choisir cette offre
               </Link>
             </div>
 
-            {/* Tier 3 : Sur Mesure / Prestations */}
-            <div className="p-8 rounded-3xl border border-slate-200 bg-slate-50 hover:border-purple-300 transition">
+            {/* Tier 3 : Prestations */}
+            <div className="p-8 rounded-3xl border border-slate-200 bg-slate-50 hover:border-purple-300 transition flex flex-col">
               <h4 className="text-lg font-bold text-slate-700 mb-2">Sur Mesure</h4>
-              <p className="text-xs text-slate-400 uppercase tracking-wide font-bold mb-4">+200 Adhérents ou Besoins Spécifiques</p>
+              <p className="text-xs text-slate-400 uppercase tracking-wide font-bold mb-4">+200 Adhérents</p>
               <div className="flex items-baseline mb-6">
                 <span className="text-3xl font-bold text-slate-900">Sur Devis</span>
               </div>
-              <div className="mb-6">
-                <p className="text-sm font-bold text-purple-700 mb-2">Prestations de services :</p>
+              <div className="mb-6 flex-1">
+                <p className="text-sm font-bold text-purple-700 mb-2">Besoin de personnalisation ?</p>
                 <p className="text-sm text-slate-600 leading-snug">
-                  Nous développons des fonctionnalités spécifiques pour votre club sur demande (Statistiques personnalisées, Intégrations API...).
+                  Notre équipe développe des modules spécifiques pour votre club (API, Stats sur mesure) sous forme de prestation de service.
                 </p>
               </div>
               <a href="#contact" className="block w-full py-2.5 rounded-xl text-center font-bold text-slate-700 border border-slate-300 hover:bg-white transition">
-                Contacter l'équipe
+                Demander un devis
               </a>
             </div>
 
@@ -280,7 +305,7 @@ const LandingPage = () => {
         </div>
       </section>
 
-      {/* --- FORMULAIRE CONTACT (POUR DEVIS) --- */}
+      {/* --- FORMULAIRE CONTACT --- */}
       <section id="contact" className="py-20 px-6 bg-slate-50">
         <div className="max-w-2xl mx-auto bg-white p-8 rounded-3xl shadow-sm border border-slate-100">
           <div className="text-center mb-8">
@@ -308,7 +333,7 @@ const LandingPage = () => {
 
       {/* --- FOOTER --- */}
       <footer className="py-8 px-6 bg-slate-900 text-center text-slate-500 text-sm">
-        <p className="mb-2">© 2025 Rivality . Développé avec passion à Toulouse 🧱.</p>
+        <p className="mb-2">© 2025 Rivality. Développé avec passion à Toulouse 🧱.</p>
         <div className="flex justify-center gap-4 text-xs">
           <a href="#" className="hover:text-purple-400">Mentions Légales</a>
           <a href="#" className="hover:text-purple-400">CGV</a>
