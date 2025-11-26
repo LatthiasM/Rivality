@@ -269,7 +269,7 @@ const Login = () => {
 // ==========================================
 // 3. COMPOSANT DASHBOARD (Ton ancienne App - Inchangé)
 // ==========================================
-const Dashboard = ({ session }: { session: unknown }) => {
+const Dashboard = ({ session }: { session: any }) => {
   const user = session.user;
   const navigate = useNavigate();
   
@@ -465,16 +465,22 @@ export default function App() {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
+    // 1. Récupérer la session actuelle
     supabase?.auth.getSession().then(({ data: { session } }) => {
       setSession(session);
       setLoading(false);
     });
 
-    supabase?.auth.onAuthStateChange((_event, session) => {
+    // 2. Écouter les changements d'auth ET capturer la souscription
+    // L'opérateur '??' gère le cas où supabase serait null
+    const { data } = supabase?.auth.onAuthStateChange((_event, session) => {
       setSession(session);
-    });
+    }) ?? { data: null };
 
-    return () => subscription.unsubscribe();
+    // 3. Nettoyage : Se désabonner proprement
+    return () => {
+      data?.subscription.unsubscribe();
+    };
   }, []);
 
   if (loading) return <div className="h-screen flex items-center justify-center text-slate-500">Chargement...</div>;
