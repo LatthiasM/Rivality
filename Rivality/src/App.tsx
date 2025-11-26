@@ -41,7 +41,7 @@ function getSportIcon(sportType: string | null | undefined): string {
 }
 
 // ==========================================
-// 1. NOUVELLE LANDING PAGE (VIOLETTE & OFFRES)
+// 1. NOUVELLE LANDING PAGE (VERSION ÉQUIPE RIVALITY)
 // ==========================================
 const LandingPage = () => {
   const [scrolled, setScrolled] = useState(false);
@@ -53,140 +53,226 @@ const LandingPage = () => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  // Palette Violette Toulouse
+  // Palette Violette Toulouse conservée pour l'identité
   const colors = {
-    primary: "bg-purple-800", // Violet Toulouse
+    primary: "bg-purple-800",
     primaryHover: "hover:bg-purple-900",
     textPrimary: "text-purple-900",
-    accent: "text-pink-600", // Touche de rose pour le dynamisme
     bgLight: "bg-slate-50",
   };
 
   return (
     <div className={`min-h-screen font-sans text-slate-800 flex flex-col`}>
       
-      {/* --- NAVBAR (Plus discrète) --- */}
+      {/* --- NAVBAR --- */}
       <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${scrolled ? 'bg-white/95 shadow-sm py-2' : 'bg-transparent py-4'}`}>
         <div className="max-w-7xl mx-auto px-6 flex justify-between items-center">
           <div className="flex items-center gap-2">
-            <span className="text-2xl">😈</span> 
+            <span className="text-2xl"></span> 
             <h1 className={`text-xl font-bold ${scrolled ? 'text-slate-900' : 'text-white'} tracking-tight`}>
-              Rivality<span className="font-light">Club</span>
+              Rivality
             </h1>
           </div>
           <div className="flex gap-6 items-center text-sm font-medium">
+            <a href="#solutions" className={`${scrolled ? 'text-slate-600' : 'text-slate-200'} hover:opacity-80 hidden md:block`}>Solutions</a>
             <a href="#features" className={`${scrolled ? 'text-slate-600' : 'text-slate-200'} hover:opacity-80 hidden md:block`}>Fonctionnalités</a>
             <a href="#pricing" className={`${scrolled ? 'text-slate-600' : 'text-slate-200'} hover:opacity-80 hidden md:block`}>Tarifs</a>
-            <a href="#contact" className={`btn ${colors.primary} text-white px-4 py-1.5 rounded-full transition-transform hover:scale-105 shadow-md border border-transparent`}>
-              Demander un devis
-            </a>
-            <Link to="/login" className={`${scrolled ? 'text-purple-700' : 'text-white'} hover:underline`}>
-              Connexion
+            <Link to="/login" className={`btn ${colors.primary} text-white px-5 py-2 rounded-full transition-transform hover:scale-105 shadow-md border border-transparent`}>
+              Espace Club
             </Link>
           </div>
         </div>
       </nav>
 
-      {/* --- HERO SECTION --- */}
+      {/* --- HERO SECTION : PERFORMANCE & ENGAGEMENT --- */}
       <header className="relative pt-32 pb-24 flex flex-col items-center text-center px-6 bg-cover bg-center">
-        {/* Overlay Violet dégradé */}
-        <div className="absolute inset-0 bg-gradient-to-br from-purple-900/90 via-indigo-900/80 to-slate-900/80 z-0"></div>
+        <div className="absolute inset-0 bg-gradient-to-br from-purple-900/90 via-indigo-900/85 to-slate-900/90 z-0"></div>
 
-        <div className="relative z-10 max-w-4xl mt-10">
+        <div className="relative z-10 max-w-5xl mt-8">
+          <div className="inline-block py-1 px-3 rounded-full bg-white/10 border border-white/20 text-purple-200 text-sm font-medium mb-6 backdrop-blur-sm">
+            🚀 La solution SaaS complète pour clubs & centres sportifs
+          </div>
           <h2 className="text-4xl md:text-6xl font-black text-white mb-6 leading-tight">
-            Votre club mérite <br/>
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-pink-400 to-purple-300">l'excellence digitale.</span>
+            Optimisez la Performance.<br/>
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-pink-400 to-purple-300">Boostez la Rétention.</span>
           </h2>
-          <p className="text-lg md:text-xl text-purple-100 max-w-2xl mx-auto mb-10 font-light">
-            La solution Toulousaine qui réunit gestion administrative rigoureuse et gamification sportive pour engager vos licenciés.
+          <p className="text-lg md:text-xl text-purple-100 max-w-2xl mx-auto mb-10 font-light leading-relaxed">
+            Rivality offre aux entraîneurs les outils pour créer des champions, tout en fidélisant vos adhérents grâce à une expérience communautaire et gamifiée unique.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <a href="#pricing" className="btn text-base px-8 py-3 bg-white text-purple-900 rounded-full font-bold shadow-lg hover:bg-purple-50 transition">
-              Voir les offres
+              Voir les offres Club
             </a>
-            <Link to="/login" className="btn text-base px-8 py-3 bg-white/10 backdrop-blur-md border border-white/30 text-white rounded-full font-medium hover:bg-white/20 transition">
-              Démo Gratuite
-            </Link>
+            <a href="#solutions" className="btn text-base px-8 py-3 bg-white/10 backdrop-blur-md border border-white/30 text-white rounded-full font-medium hover:bg-white/20 transition">
+              Découvrir la méthode
+            </a>
+          </div>
+          
+          {/* Badge Multi-plateforme */}
+          <div className="mt-12 flex justify-center items-center gap-6 text-slate-300 text-sm font-medium opacity-80">
+            <span className="flex items-center gap-2">💻 Ordinateur</span>
+            <span className="flex items-center gap-2">📱 Mobile</span>
+            <span className="flex items-center gap-2">📟 Tablette</span>
           </div>
         </div>
       </header>
 
-      {/* --- FONCTIONNALITÉS (Listing Compact) --- */}
-      <section id="features" className="py-20 px-6 bg-white">
+      {/* --- PROPOSITION DE VALEUR (2 AXES) --- */}
+      <section id="solutions" className="py-20 px-6 bg-white relative z-10 -mt-8 rounded-t-3xl">
         <div className="max-w-6xl mx-auto">
-          <div className="text-center mb-12">
-            <h3 className={`text-sm font-bold uppercase tracking-wider mb-2 ${colors.textPrimary}`}>Tout inclus</h3>
-            <h4 className="text-3xl font-bold text-slate-900">Une suite complète pour votre club</h4>
-          </div>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+            
+            {/* Axe 1 : Performance */}
+            <div className="bg-slate-50 p-8 rounded-3xl border border-slate-100 shadow-sm hover:shadow-md transition">
+              <div className="w-12 h-12 bg-blue-100 text-blue-600 rounded-xl flex items-center justify-center text-2xl mb-6">📈</div>
+              <h3 className="text-2xl font-bold text-slate-900 mb-4">Performance & Préparation</h3>
+              <p className="text-slate-600 leading-relaxed mb-4">
+                Pour vos coachs. Une suite d'outils professionnels pour l'analyse de données, le suivi des records personnels et la planification précise des cycles d'entraînements.
+              </p>
+              <ul className="space-y-2 text-sm text-slate-700 font-medium">
+                <li className="flex items-center gap-2">✅ Planification des séances</li>
+                <li className="flex items-center gap-2">✅ Historique des records</li>
+                <li className="flex items-center gap-2">✅ Préparation aux compétitions</li>
+              </ul>
+            </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-            {[
-              { icon: "📅", title: "Calendrier & Convocations", desc: "Gérez les matchs et entraînements. Suivi des présences en temps réel." },
-              { icon: "🏆", title: "Gamification & Badges", desc: "Système de récompenses automatiques pour motiver les joueurs." },
-              { icon: "📊", title: "Suivi de Performance", desc: "Stats détaillées par joueur, adaptées à chaque sport (Foot, Natation...)." },
-              { icon: "🚗", title: "Module Covoiturage", desc: "Organisez les déplacements directement depuis la convocation." },
-              { icon: "📁", title: "Gestion Administrative", desc: "Licences, certificats médicaux et cotisations centralisés." },
-              { icon: "💬", title: "Mur du Vestiaire", desc: "Communication interne sécurisée entre coachs et joueurs." },
-              { icon: "📱", title: "App Mobile Joueur", desc: "Chaque licencié a son accès pour suivre ses progrès." },
-              { icon: "🌦️", title: "Météo Terrain", desc: "Alertes automatiques en cas de risque d'impraticabilité." }
-            ].map((feature, idx) => (
-              <div key={idx} className="p-6 rounded-2xl bg-slate-50 border border-slate-100 hover:border-purple-200 hover:shadow-lg transition group">
-                <div className="text-4xl mb-4 group-hover:scale-110 transition-transform duration-300">{feature.icon}</div>
-                <h5 className="font-bold text-slate-800 mb-2">{feature.title}</h5>
-                <p className="text-sm text-slate-500 leading-relaxed">{feature.desc}</p>
-              </div>
-            ))}
+            {/* Axe 2 : Engagement */}
+            <div className="bg-slate-50 p-8 rounded-3xl border border-slate-100 shadow-sm hover:shadow-md transition">
+              <div className="w-12 h-12 bg-purple-100 text-purple-600 rounded-xl flex items-center justify-center text-2xl mb-6">🔥</div>
+              <h3 className="text-2xl font-bold text-slate-900 mb-4">Engagement & Rétention</h3>
+              <p className="text-slate-600 leading-relaxed mb-4">
+                Pour vos adhérents. Transformez l'effort en jeu. Notre système de gamification et de communauté motive vos membres à revenir s'entraîner plus souvent.
+              </p>
+              <ul className="space-y-2 text-sm text-slate-700 font-medium">
+                <li className="flex items-center gap-2">✅ Système d'Achievements</li>
+                <li className="flex items-center gap-2">✅ Défis & Challenges Club</li>
+                <li className="flex items-center gap-2">✅ Renforcement Communautaire</li>
+              </ul>
+            </div>
+
           </div>
         </div>
       </section>
 
-      {/* --- TARIFICATION & DEVIS --- */}
-      <section id="pricing" className={`py-20 px-6 ${colors.bgLight}`}>
-        <div className="max-w-5xl mx-auto">
+      {/* --- FONCTIONNALITÉS CLÉS --- */}
+      <section id="features" className={`py-20 px-6 ${colors.bgLight}`}>
+        <div className="max-w-6xl mx-auto">
           <div className="text-center mb-16">
-            <h3 className="text-3xl font-bold text-slate-900">Des tarifs adaptés aux clubs locaux</h3>
-            <p className="text-slate-600 mt-2">Choisissez l'offre qui correspond à votre structure.</p>
+            <h3 className={`text-sm font-bold uppercase tracking-wider mb-2 ${colors.textPrimary}`}>Tout-en-un</h3>
+            <h4 className="text-3xl font-bold text-slate-900">Une plateforme unique pour Coachs & Adhérents</h4>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            {/* Gestion Agenda */}
+            <div className="bg-white p-6 rounded-2xl shadow-sm border border-slate-100">
+              <div className="text-4xl mb-4">📅</div>
+              <h5 className="font-bold text-slate-800 text-lg mb-2">Gestion d'Agenda</h5>
+              <p className="text-slate-500 text-sm leading-relaxed">
+                Planifiez vos séances, gérez les événements du club et visualisez les disponibilités des coachs en temps réel.
+              </p>
+            </div>
+
+            {/* Messagerie */}
+            <div className="bg-white p-6 rounded-2xl shadow-sm border border-slate-100">
+              <div className="text-4xl mb-4">💬</div>
+              <h5 className="font-bold text-slate-800 text-lg mb-2">Messagerie Intégrée</h5>
+              <p className="text-slate-500 text-sm leading-relaxed">
+                Fluidifiez la communication. Canaux directs entre administrateurs, coachs et membres sans quitter l'application.
+              </p>
+            </div>
+
+            {/* Gamification */}
+            <div className="bg-white p-6 rounded-2xl shadow-sm border border-slate-100">
+              <div className="text-4xl mb-4">🏆</div>
+              <h5 className="font-bold text-slate-800 text-lg mb-2">Gamification</h5>
+              <p className="text-slate-500 text-sm leading-relaxed">
+                Débloquez des badges, lancez des défis mensuels et créez une émulation positive au sein de votre structure.
+              </p>
+            </div>
+
+            {/* Suivi Perf */}
+            <div className="bg-white p-6 rounded-2xl shadow-sm border border-slate-100">
+              <div className="text-4xl mb-4">📊</div>
+              <h5 className="font-bold text-slate-800 text-lg mb-2">Analyse de Performance</h5>
+              <p className="text-slate-500 text-sm leading-relaxed">
+                Tableaux de bord détaillés pour suivre la progression physique et technique de chaque athlète.
+              </p>
+            </div>
+
+             {/* Multi-Device */}
+             <div className="bg-white p-6 rounded-2xl shadow-sm border border-slate-100 md:col-span-2 flex flex-col justify-center items-center text-center">
+              <div className="text-4xl mb-4">📱 💻</div>
+              <h5 className="font-bold text-slate-800 text-lg mb-2">100% Multi-plateforme</h5>
+              <p className="text-slate-500 text-sm leading-relaxed max-w-md">
+                Accessible partout. Que vous soyez au bureau sur PC, ou au bord du terrain sur tablette ou smartphone.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* --- TARIFICATION (MODÈLE ÉCONOMIQUE) --- */}
+      <section id="pricing" className="py-20 px-6 bg-white">
+        <div className="max-w-5xl mx-auto">
+          <div className="text-center mb-16">
+            <h3 className="text-3xl font-bold text-slate-900">Une tarification adaptée à votre taille</h3>
+            <p className="text-slate-600 mt-2">Abonnement mensuel sans engagement. Évolue avec votre club.</p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             
-            {/* Offre Standard */}
-            <div className="bg-white p-8 rounded-3xl shadow-xl border border-purple-100 relative overflow-hidden">
-              <div className="absolute top-0 right-0 bg-purple-600 text-white text-xs font-bold px-3 py-1 rounded-bl-lg">POPULAIRE</div>
-              <h4 className="text-xl font-bold text-slate-600 mb-2">Offre Club Starter</h4>
+            {/* Tier 1 : Petit Club */}
+            <div className="p-8 rounded-3xl border border-slate-200 hover:border-purple-300 transition relative">
+              <h4 className="text-lg font-bold text-slate-700 mb-2">Démarrage</h4>
+              <p className="text-xs text-slate-400 uppercase tracking-wide font-bold mb-4">Jusqu'à 50 Adhérents</p>
               <div className="flex items-baseline mb-6">
-                <span className="text-5xl font-extrabold text-purple-900">30€</span>
-                <span className="text-slate-500 ml-2">/ mois</span>
+                <span className="text-4xl font-extrabold text-slate-900">49€</span>
+                <span className="text-slate-500 ml-1">/ mois</span>
               </div>
-              <p className="text-sm text-slate-500 mb-6">Idéal pour les clubs amateurs jusqu'à 3 équipes.</p>
-              
-              <ul className="space-y-3 mb-8 text-sm">
-                <li className="flex items-center gap-2"><span className="text-green-500">✓</span> Gestion jusqu'à 60 licenciés</li>
-                <li className="flex items-center gap-2"><span className="text-green-500">✓</span> Calendrier & Convocations illimités</li>
-                <li className="flex items-center gap-2"><span className="text-green-500">✓</span> Système de Badges basique</li>
-                <li className="flex items-center gap-2"><span className="text-green-500">✓</span> Support par email</li>
+              <ul className="space-y-3 mb-8 text-sm text-slate-600">
+                <li>✓ Toutes les fonctionnalités</li>
+                <li>✓ Support Email</li>
+                <li>✓ App Coach & Adhérent</li>
               </ul>
-              <Link to="/login" className={`block w-full py-3 rounded-xl text-center font-bold text-white ${colors.primary} ${colors.primaryHover} transition`}>
-                Commencer l'essai
+              <Link to="/login" className="block w-full py-2.5 rounded-xl text-center font-bold text-purple-700 bg-purple-50 hover:bg-purple-100 transition">
+                Essayer
               </Link>
             </div>
 
-            {/* Offre Sur Mesure */}
-            <div className="bg-slate-900 p-8 rounded-3xl shadow-2xl text-white border border-slate-700">
-              <h4 className="text-xl font-bold text-purple-300 mb-2">Offre "Industrialisation"</h4>
+            {/* Tier 2 : Club Moyen (Mise en avant) */}
+            <div className="p-8 rounded-3xl border-2 border-purple-600 shadow-xl relative bg-slate-900 text-white transform md:-translate-y-4">
+              <div className="absolute top-0 right-0 bg-purple-600 text-white text-xs font-bold px-3 py-1 rounded-bl-lg">POPULAIRE</div>
+              <h4 className="text-lg font-bold text-white mb-2">Croissance</h4>
+              <p className="text-xs text-purple-300 uppercase tracking-wide font-bold mb-4">50 à 200 Adhérents</p>
               <div className="flex items-baseline mb-6">
-                <span className="text-4xl font-bold">Sur Devis</span>
+                <span className="text-5xl font-extrabold text-white">89€</span>
+                <span className="text-purple-200 ml-1">/ mois</span>
               </div>
-              <p className="text-sm text-slate-400 mb-6">Pour les structures multisports ou besoins spécifiques.</p>
-              
               <ul className="space-y-3 mb-8 text-sm text-slate-300">
-                <li className="flex items-center gap-2"><span className="text-purple-400">✦</span> Licenciés illimités</li>
-                <li className="flex items-center gap-2"><span className="text-purple-400">✦</span> Personnalisation complète (Logo, Couleurs)</li>
-                <li className="flex items-center gap-2"><span className="text-purple-400">✦</span> Développement de stats spécifiques</li>
-                <li className="flex items-center gap-2"><span className="text-purple-400">✦</span> Formation des coachs sur site</li>
+                <li>✓ Toutes les fonctionnalités</li>
+                <li>✓ Support Prioritaire</li>
+                <li>✓ Importation de données offerte</li>
               </ul>
-              <a href="#contact" className="block w-full py-3 rounded-xl text-center font-bold bg-white text-slate-900 hover:bg-slate-100 transition">
-                Demander un devis
+              <Link to="/login" className="block w-full py-3 rounded-xl text-center font-bold text-purple-900 bg-white hover:bg-slate-100 transition">
+                Choisir cette offre
+              </Link>
+            </div>
+
+            {/* Tier 3 : Sur Mesure / Prestations */}
+            <div className="p-8 rounded-3xl border border-slate-200 bg-slate-50 hover:border-purple-300 transition">
+              <h4 className="text-lg font-bold text-slate-700 mb-2">Sur Mesure</h4>
+              <p className="text-xs text-slate-400 uppercase tracking-wide font-bold mb-4">+200 Adhérents ou Besoins Spécifiques</p>
+              <div className="flex items-baseline mb-6">
+                <span className="text-3xl font-bold text-slate-900">Sur Devis</span>
+              </div>
+              <div className="mb-6">
+                <p className="text-sm font-bold text-purple-700 mb-2">Prestations de services :</p>
+                <p className="text-sm text-slate-600 leading-snug">
+                  Nous développons des fonctionnalités spécifiques pour votre club sur demande (Statistiques personnalisées, Intégrations API...).
+                </p>
+              </div>
+              <a href="#contact" className="block w-full py-2.5 rounded-xl text-center font-bold text-slate-700 border border-slate-300 hover:bg-white transition">
+                Contacter l'équipe
               </a>
             </div>
 
@@ -194,45 +280,40 @@ const LandingPage = () => {
         </div>
       </section>
 
-      {/* --- CONTACT / DEMANDE DE DEVIS --- */}
-      <section id="contact" className="py-20 px-6 bg-white">
-        <div className="max-w-3xl mx-auto text-center">
-          <h3 className="text-3xl font-bold text-slate-900 mb-8">Parlons de votre projet</h3>
-          <div className="bg-slate-50 p-8 rounded-3xl shadow-inner border border-slate-100 text-left">
-            <form className="space-y-4" onSubmit={(e) => { e.preventDefault(); alert("Demande envoyée !"); }}>
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                <div>
-                  <label className="block text-sm font-medium text-slate-700 mb-1">Nom du Club</label>
-                  <input type="text" className="w-full p-3 rounded-lg border border-slate-300 focus:ring-2 focus:ring-purple-500 outline-none" placeholder="ex: FC Toulouse" />
-                </div>
-                <div>
-                  <label className="block text-sm font-medium text-slate-700 mb-1">Votre Email</label>
-                  <input type="email" className="w-full p-3 rounded-lg border border-slate-300 focus:ring-2 focus:ring-purple-500 outline-none" placeholder="contact@club.com" />
-                </div>
-              </div>
-              <div>
-                <label className="block text-sm font-medium text-slate-700 mb-1">Sports pratiqués</label>
-                <input type="text" className="w-full p-3 rounded-lg border border-slate-300 focus:ring-2 focus:ring-purple-500 outline-none" placeholder="Football, Judo, Natation..." />
-              </div>
-              <div>
-                <label className="block text-sm font-medium text-slate-700 mb-1">Besoin spécifique</label>
-                <textarea className="w-full p-3 rounded-lg border border-slate-300 focus:ring-2 focus:ring-purple-500 outline-none h-32" placeholder="Bonjour, je souhaite digitaliser les convocations de mes 150 licenciés..."></textarea>
-              </div>
-              <button className={`w-full py-3 rounded-lg font-bold text-white shadow-lg ${colors.primary} ${colors.primaryHover} transition`}>
-                Envoyer ma demande
-              </button>
-            </form>
+      {/* --- FORMULAIRE CONTACT (POUR DEVIS) --- */}
+      <section id="contact" className="py-20 px-6 bg-slate-50">
+        <div className="max-w-2xl mx-auto bg-white p-8 rounded-3xl shadow-sm border border-slate-100">
+          <div className="text-center mb-8">
+            <h3 className="text-2xl font-bold text-slate-900">Demander une démo ou un devis</h3>
+            <p className="text-slate-500 text-sm mt-2">Notre équipe basée à Toulouse vous répond sous 24h.</p>
           </div>
-          <p className="mt-8 text-sm text-slate-500">
-            Basé à Toulouse. Réponse sous 24h. <br/>
-            📧 contact@rivality.club
-          </p>
+          <form className="space-y-4" onSubmit={(e) => { e.preventDefault(); alert("Demande envoyée !"); }}>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+              <input type="text" className="w-full p-3 rounded-lg border border-slate-300 bg-slate-50 outline-none focus:ring-2 focus:ring-purple-500 transition" placeholder="Nom du Club" />
+              <input type="email" className="w-full p-3 rounded-lg border border-slate-300 bg-slate-50 outline-none focus:ring-2 focus:ring-purple-500 transition" placeholder="Email contact" />
+            </div>
+            <select className="w-full p-3 rounded-lg border border-slate-300 bg-slate-50 outline-none focus:ring-2 focus:ring-purple-500 transition text-slate-600">
+              <option>Nombre d'adhérents...</option>
+              <option>Moins de 50</option>
+              <option>50 - 200</option>
+              <option>Plus de 200</option>
+            </select>
+            <textarea className="w-full p-3 rounded-lg border border-slate-300 bg-slate-50 outline-none focus:ring-2 focus:ring-purple-500 transition h-32" placeholder="Un besoin spécifique ? Une demande de personnalisation ?"></textarea>
+            <button className={`w-full py-3 rounded-xl font-bold text-white shadow-lg ${colors.primary} ${colors.primaryHover} transition`}>
+              Envoyer ma demande
+            </button>
+          </form>
         </div>
       </section>
 
       {/* --- FOOTER --- */}
       <footer className="py-8 px-6 bg-slate-900 text-center text-slate-500 text-sm">
-        <p>© 2025 Rivality Club. L'application qui fait bouger le sport amateur.</p>
+        <p className="mb-2">© 2025 Rivality . Développé avec passion à Toulouse 🧱.</p>
+        <div className="flex justify-center gap-4 text-xs">
+          <a href="#" className="hover:text-purple-400">Mentions Légales</a>
+          <a href="#" className="hover:text-purple-400">CGV</a>
+          <a href="#" className="hover:text-purple-400">Support</a>
+        </div>
       </footer>
     </div>
   );
