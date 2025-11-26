@@ -85,8 +85,7 @@ const LandingPage = () => {
       </nav>
 
       {/* --- HERO SECTION --- */}
-      <header className="relative pt-32 pb-24 flex flex-col items-center text-center px-6 bg-cover bg-center"
-              style={{backgroundImage: "url('https://images.unsplash.com/photo-1517649763962-0c623066013b?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80')"}}>
+      <header className="relative pt-32 pb-24 flex flex-col items-center text-center px-6 bg-cover bg-center">
         <div className="absolute inset-0 bg-gradient-to-br from-purple-900/95 via-indigo-900/90 to-slate-900/90 z-0"></div>
 
         <div className="relative z-10 max-w-5xl mt-8">
