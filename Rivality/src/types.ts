@@ -174,7 +174,7 @@ export type MusculationLogData = {
 };
 
 // Le 'data' de notre base de données
-export type SoloLogData = NatationLogData | MusculationLogData | Record<string, any>;
+export type SoloLogData = NatationLogData | MusculationLogData | Record<string, unknown>;
 
 export interface SoloLog {
   id: string;

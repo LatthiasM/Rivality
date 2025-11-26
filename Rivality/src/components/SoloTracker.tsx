@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Group, User, SoloLog } from '../types';
 import { loadSoloLogs, createSoloLog, deleteSoloLog, updateSoloLog } from '../lib/storage';
 import { Toaster, toast } from 'react-hot-toast';
@@ -11,7 +11,7 @@ interface Props {
   getSportIcon: (sportType: string) => string;
 }
 
-export default function SoloTracker({ group, user, onLogout, onBackToHub, getSportIcon }: Props) {
+export default function SoloTracker({ group, onLogout, onBackToHub, getSportIcon }: Props) {
   const [logs, setLogs] = useState<SoloLog[]>([]);
   const [loading, setLoading] = useState(true);
   
@@ -38,27 +38,25 @@ export default function SoloTracker({ group, user, onLogout, onBackToHub, getSpo
     if (!notes.trim()) return;
     setIsSaving(true);
 
+    // On prépare l'objet data qui contient les notes
+    const payloadData = { notes };
+
     if (editingLog) {
       // Logique de MISE À JOUR
-      const updatedLog = await updateSoloLog({
-        ...editingLog,
-        date: new Date(date).toISOString(),
-        notes: notes.trim(),
-      });
+      // CORRECTION : On envoie payloadData au lieu de {...data} indéfini
+      const updatedLog = await updateSoloLog(editingLog.id, date, payloadData);
       if (updatedLog) {
         setLogs(logs.map(l => l.id === updatedLog.id ? updatedLog : l));
         toast.success('Entrée mise à jour !');
-        setEditingLog(null); // Quitter le mode édition
+        setEditingLog(null);
       }
     } else {
       // Logique de CRÉATION
-      const newLog = await createSoloLog({
-        date: new Date(date).toISOString(),
-        notes: notes.trim(),
-      }, group.id);
+      // CORRECTION : On ajoute group.id à la fin et on envoie payloadData
+      const newLog = await createSoloLog(date, payloadData, group.id);
       
       if (newLog) {
-        setLogs([newLog, ...logs]); // Ajouter au début de la liste
+        setLogs([newLog, ...logs]);
         toast.success('Entrée enregistrée !');
       }
     }
@@ -82,11 +80,12 @@ export default function SoloTracker({ group, user, onLogout, onBackToHub, getSpo
     }
   }
 
-  // Handler pour l'édition (pré-remplit le formulaire)
+  // Handler pour l'édition
   function handleEdit(log: SoloLog) {
     setEditingLog(log);
     setDate(log.date.slice(0, 10));
-    setNotes(log.notes);
+    // CORRECTION : On va chercher les notes dans log.data avec un cast 'any' pour éviter l'erreur TS
+    setNotes((log.data as any).notes || '');
     window.scrollTo({ top: 0, behavior: 'smooth' });
   }
 
@@ -164,8 +163,8 @@ export default function SoloTracker({ group, user, onLogout, onBackToHub, getSpo
                     <button className="btn !px-2 !py-1 text-xs" onClick={() => handleDelete(log.id)}>Supprimer</button>
                   </div>
                 </div>
-                {/* 'whitespace-pre-wrap' est important pour respecter les sauts de ligne */}
-                <p className="text-sm whitespace-pre-wrap">{log.notes}</p>
+                {/* CORRECTION : Affichage des notes depuis data */}
+                <p className="text-sm whitespace-pre-wrap">{(log.data as any).notes}</p>
               </div>
             ))}
           </div>

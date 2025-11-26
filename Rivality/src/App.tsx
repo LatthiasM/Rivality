@@ -3,7 +3,7 @@ import { BrowserRouter as Router, Routes, Route, Navigate, Link, useNavigate } f
 import './styles.css';
 import { Toaster, toast } from 'react-hot-toast';
 import { supabase, loadGroups, createGroup } from './lib/storage';
-import { User, Group } from './types';
+import { Group } from './types';
 
 // Import de tes composants existants (Assure-toi que les chemins sont bons)
 import Tracker from './components/Tracker'; 
@@ -269,7 +269,7 @@ const Login = () => {
 // ==========================================
 // 3. COMPOSANT DASHBOARD (Ton ancienne App - Inchangé)
 // ==========================================
-const Dashboard = ({ session }: { session: any }) => {
+const Dashboard = ({ session }: { session: unknown }) => {
   const user = session.user;
   const navigate = useNavigate();
   
@@ -293,7 +293,7 @@ const Dashboard = ({ session }: { session: any }) => {
   }, [user]);
 
   const handleLogout = async () => {
-    await supabase.auth.signOut();
+    await supabase?.auth.signOut();
     navigate('/');
   };
 
@@ -465,12 +465,12 @@ export default function App() {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    supabase.auth.getSession().then(({ data: { session } }) => {
+    supabase?.auth.getSession().then(({ data: { session } }) => {
       setSession(session);
       setLoading(false);
     });
 
-    const { data: { subscription } } = supabase.auth.onAuthStateChange((_event, session) => {
+    supabase?.auth.onAuthStateChange((_event, session) => {
       setSession(session);
     });
 
