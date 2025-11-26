@@ -67,15 +67,16 @@ const LandingPage = () => {
       <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${scrolled ? 'bg-white/95 shadow-sm py-2' : 'bg-transparent py-4'}`}>
         <div className="max-w-7xl mx-auto px-6 flex justify-between items-center">
           <div className="flex items-center gap-2">
-            <span className="text-3xl">🏟️</span> 
             <h1 className={`text-xl font-bold ${scrolled ? 'text-slate-900' : 'text-white'} tracking-tight flex flex-col md:flex-row md:items-baseline`}>
               Le Vestiaire
               <span className={`text-xs font-medium ml-1 ${scrolled ? 'text-purple-600' : 'text-purple-300'}`}>by Rivality</span>
             </h1>
           </div>
           <div className="flex gap-6 items-center text-sm font-medium">
-            <a href="#solutions" className={`${scrolled ? 'text-slate-600' : 'text-slate-200'} hover:opacity-80 hidden md:block`}>Le Concept</a>
+            <a href="#solutions" className={`${scrolled ? 'text-slate-600' : 'text-slate-200'} hover:opacity-80 hidden md:block`}>Concept</a>
             <a href="#features" className={`${scrolled ? 'text-slate-600' : 'text-slate-200'} hover:opacity-80 hidden md:block`}>Outils</a>
+            {/* Lien ajouté vers la nouvelle section Badges */}
+            <a href="#badges" className={`${scrolled ? 'text-slate-600' : 'text-slate-200'} hover:opacity-80 hidden md:block text-purple-400 font-bold`}>Trophées</a>
             <a href="#pricing" className={`${scrolled ? 'text-slate-600' : 'text-slate-200'} hover:opacity-80 hidden md:block`}>Tarifs</a>
             <Link to="/login" className={`btn ${colors.primary} text-white px-5 py-2 rounded-full transition-transform hover:scale-105 shadow-md border border-transparent`}>
               Entrer dans Le Vestiaire
@@ -84,7 +85,7 @@ const LandingPage = () => {
         </div>
       </nav>
 
-      {/* --- HERO SECTION --- */}
+      {/* --- HERO SECTION (Inchangé) --- */}
       <header className="relative pt-32 pb-24 flex flex-col items-center text-center px-6 bg-cover bg-center">
         <div className="absolute inset-0 bg-gradient-to-br from-purple-900/95 via-indigo-900/90 to-slate-900/90 z-0"></div>
 
@@ -116,7 +117,7 @@ const LandingPage = () => {
         </div>
       </header>
 
-      {/* --- PROPOSITION DE VALEUR (LE CONCEPT) --- */}
+      {/* --- PROPOSITION DE VALEUR (Inchangé) --- */}
       <section id="solutions" className="py-20 px-6 bg-white relative z-10 -mt-8 rounded-t-3xl">
         <div className="max-w-6xl mx-auto">
           <div className="text-center mb-16">
@@ -125,7 +126,6 @@ const LandingPage = () => {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-stretch">
-            
             {/* Côté Bureau / Staff */}
             <div className="bg-slate-50 p-8 rounded-3xl border border-slate-100 shadow-sm hover:shadow-md transition">
               <div className="w-12 h-12 bg-blue-100 text-blue-600 rounded-xl flex items-center justify-center text-2xl mb-6">📋</div>
@@ -153,12 +153,11 @@ const LandingPage = () => {
                 <li className="flex items-center gap-3">💬 <strong>Social :</strong> Mur du club et sondages.</li>
               </ul>
             </div>
-
           </div>
         </div>
       </section>
 
-      {/* --- FONCTIONNALITÉS CLÉS (GRID COMPLÈTE) --- */}
+      {/* --- FONCTIONNALITÉS CLÉS (Inchangé) --- */}
       <section id="features" className={`py-20 px-6 ${colors.bgLight}`}>
         <div className="max-w-6xl mx-auto">
           <div className="text-center mb-16">
@@ -167,7 +166,6 @@ const LandingPage = () => {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-            
             {/* 1. Agenda */}
             <div className="bg-white p-6 rounded-2xl shadow-sm border border-slate-100 hover:border-purple-200 transition group">
               <div className="text-3xl mb-4 group-hover:scale-110 transition-transform">📅</div>
@@ -176,7 +174,6 @@ const LandingPage = () => {
                 Synchronisation automatique des matchs et entraînements sur les téléphones des joueurs.
               </p>
             </div>
-
             {/* 2. Messagerie */}
             <div className="bg-white p-6 rounded-2xl shadow-sm border border-slate-100 hover:border-purple-200 transition group">
               <div className="text-3xl mb-4 group-hover:scale-110 transition-transform">💬</div>
@@ -185,7 +182,6 @@ const LandingPage = () => {
                 Canaux de discussion sécurisés (Coach-Joueurs, Groupe complet) pour les infos officielles.
               </p>
             </div>
-
             {/* 3. Gamification */}
             <div className="bg-white p-6 rounded-2xl shadow-sm border border-slate-100 hover:border-purple-200 transition group">
               <div className="text-3xl mb-4 group-hover:scale-110 transition-transform">🏅</div>
@@ -194,7 +190,6 @@ const LandingPage = () => {
                 "Le Pilier", "Le Goleador"... Des récompenses automatiques pour valoriser l'assiduité.
               </p>
             </div>
-
             {/* 4. Perf */}
             <div className="bg-white p-6 rounded-2xl shadow-sm border border-slate-100 hover:border-purple-200 transition group">
               <div className="text-3xl mb-4 group-hover:scale-110 transition-transform">📊</div>
@@ -203,7 +198,6 @@ const LandingPage = () => {
                 Suivi précis de la progression (Temps, Poids, Scores) adapté à chaque sport.
               </p>
             </div>
-
             {/* 5. Covoiturage */}
             <div className="bg-white p-6 rounded-2xl shadow-sm border border-slate-100 hover:border-purple-200 transition group">
               <div className="text-3xl mb-4 group-hover:scale-110 transition-transform">🚗</div>
@@ -212,7 +206,6 @@ const LandingPage = () => {
                 Module intégré aux convocations : "Qui a une place ?" réglé en un clic.
               </p>
             </div>
-
             {/* 6. Administratif */}
             <div className="bg-white p-6 rounded-2xl shadow-sm border border-slate-100 hover:border-purple-200 transition group">
               <div className="text-3xl mb-4 group-hover:scale-110 transition-transform">📁</div>
@@ -221,7 +214,6 @@ const LandingPage = () => {
                 Suivi des certificats médicaux, tailles de maillots et paiements des cotisations.
               </p>
             </div>
-
             {/* 7. Météo */}
             <div className="bg-white p-6 rounded-2xl shadow-sm border border-slate-100 hover:border-purple-200 transition group">
               <div className="text-3xl mb-4 group-hover:scale-110 transition-transform">🌦️</div>
@@ -230,7 +222,6 @@ const LandingPage = () => {
                 Alertes automatiques en cas de pluie ou impraticabilité du terrain.
               </p>
             </div>
-
             {/* 8. Multi-Device */}
              <div className="bg-white p-6 rounded-2xl shadow-sm border border-slate-100 hover:border-purple-200 transition group">
               <div className="text-3xl mb-4 group-hover:scale-110 transition-transform">📱</div>
@@ -243,8 +234,76 @@ const LandingPage = () => {
         </div>
       </section>
 
-      {/* --- TARIFICATION --- */}
-      <section id="pricing" className="py-20 px-6 bg-white">
+      {/* ========================================= */}
+      {/* --- NOUVELLE SECTION : EXEMPLES DE BADGES --- */}
+      {/* ========================================= */}
+      <section id="badges" className="py-20 px-6 bg-white">
+        <div className="max-w-6xl mx-auto">
+          {/* Header de section */}
+          <div className="text-center mb-16">
+             <h3 className={`text-sm font-bold uppercase tracking-wider mb-2 ${colors.textPrimary}`}>Gamification</h3>
+             <h4 className="text-3xl font-bold text-slate-900">Le Mur des Trophées</h4>
+             <p className="text-slate-600 mt-2 max-w-2xl mx-auto">
+               Motivez vos joueurs en transformant chaque effort en récompense. Voici quelques exemples de badges que vos adhérents vont adorer débloquer.
+             </p>
+          </div>
+
+          {/* Grille des Badges */}
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
+             {/* Badge 1: Fidélité */}
+             <div className="flex flex-col items-center text-center p-6 rounded-3xl bg-gradient-to-br from-slate-50 to-slate-100 border-2 border-slate-200 shadow-sm relative overflow-hidden group hover:border-purple-400 transition-all">
+               {/* Effet de brillance au survol */}
+               <div className="absolute top-0 left-0 w-full h-full bg-white opacity-0 group-hover:opacity-20 transition-opacity duration-500 bg-[radial-gradient(circle_at_50%_0%,rgba(255,255,255,0.6),transparent_70%)]"></div>
+               <div className="text-6xl mb-4 drop-shadow-md filter grayscale group-hover:grayscale-0 transition-all duration-300 transform group-hover:scale-110">🏗️</div>
+               <h5 className="font-bold text-slate-800 text-lg mb-1">Le Pilier</h5>
+               <p className="text-xs text-purple-600 font-semibold uppercase mb-3">Assiduité</p>
+               <p className="text-slate-500 text-sm leading-snug">
+                 Présent à 10 entraînements consécutifs. L'âme du club.
+               </p>
+             </div>
+
+             {/* Badge 2: Performance Foot/Co-situations */}
+             <div className="flex flex-col items-center text-center p-6 rounded-3xl bg-gradient-to-br from-slate-50 to-slate-100 border-2 border-slate-200 shadow-sm relative overflow-hidden group hover:border-blue-400 transition-all">
+                <div className="absolute top-0 left-0 w-full h-full bg-white opacity-0 group-hover:opacity-20 transition-opacity duration-500 bg-[radial-gradient(circle_at_50%_0%,rgba(255,255,255,0.6),transparent_70%)]"></div>
+               <div className="text-6xl mb-4 drop-shadow-md filter grayscale group-hover:grayscale-0 transition-all duration-300 transform group-hover:scale-110">🧱</div>
+               <h5 className="font-bold text-slate-800 text-lg mb-1">Mur de Briques</h5>
+               <p className="text-xs text-blue-600 font-semibold uppercase mb-3">Performance</p>
+               <p className="text-slate-500 text-sm leading-snug">
+                 Réaliser 3 matchs sans encaisser de but (Clean Sheets) d'affilée.
+               </p>
+             </div>
+
+             {/* Badge 3: Performance Endurance/Natation */}
+             <div className="flex flex-col items-center text-center p-6 rounded-3xl bg-gradient-to-br from-slate-50 to-slate-100 border-2 border-slate-200 shadow-sm relative overflow-hidden group hover:border-cyan-400 transition-all">
+                <div className="absolute top-0 left-0 w-full h-full bg-white opacity-0 group-hover:opacity-20 transition-opacity duration-500 bg-[radial-gradient(circle_at_50%_0%,rgba(255,255,255,0.6),transparent_70%)]"></div>
+               <div className="text-6xl mb-4 drop-shadow-md filter grayscale group-hover:grayscale-0 transition-all duration-300 transform group-hover:scale-110">🦈</div>
+               <h5 className="font-bold text-slate-800 text-lg mb-1">Le Requin</h5>
+               <p className="text-xs text-cyan-600 font-semibold uppercase mb-3">Endurance</p>
+               <p className="text-slate-500 text-sm leading-snug">
+                 Avoir parcouru un total de 50km de nage dans la saison.
+               </p>
+             </div>
+
+             {/* Badge 4: Social/Fun */}
+             <div className="flex flex-col items-center text-center p-6 rounded-3xl bg-gradient-to-br from-slate-50 to-slate-100 border-2 border-slate-200 shadow-sm relative overflow-hidden group hover:border-pink-400 transition-all">
+                <div className="absolute top-0 left-0 w-full h-full bg-white opacity-0 group-hover:opacity-20 transition-opacity duration-500 bg-[radial-gradient(circle_at_50%_0%,rgba(255,255,255,0.6),transparent_70%)]"></div>
+               <div className="text-6xl mb-4 drop-shadow-md filter grayscale group-hover:grayscale-0 transition-all duration-300 transform group-hover:scale-110">📣</div>
+               <h5 className="font-bold text-slate-800 text-lg mb-1">L'Ambianceur</h5>
+               <p className="text-xs text-pink-600 font-semibold uppercase mb-3">Communauté</p>
+               <p className="text-slate-500 text-sm leading-snug">
+                 Toujours le premier à répondre aux sondages et à animer le chat du vestiaire.
+               </p>
+             </div>
+          </div>
+          
+          <p className="text-center text-slate-500 text-sm mt-12 italic">
+            + des dizaines d'autres badges adaptés automatiquement à votre sport (Football, Rugby, Judo, Handball...).
+          </p>
+        </div>
+      </section>
+
+      {/* --- TARIFICATION (Couleur de fond modifiée pour l'alternance) --- */}
+      <section id="pricing" className={`py-20 px-6 ${colors.bgLight}`}>
         <div className="max-w-5xl mx-auto">
           <div className="text-center mb-16">
             <h3 className="text-3xl font-bold text-slate-900">Abonnements Club</h3>
@@ -254,7 +313,7 @@ const LandingPage = () => {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             
             {/* Tier 1 */}
-            <div className="p-8 rounded-3xl border border-slate-200 hover:border-purple-300 transition relative flex flex-col">
+            <div className="p-8 rounded-3xl border border-slate-200 bg-white hover:border-purple-300 transition relative flex flex-col shadow-sm">
               <h4 className="text-lg font-bold text-slate-700 mb-2">Amateur</h4>
               <p className="text-xs text-slate-400 uppercase tracking-wide font-bold mb-4">Jusqu'à 50 Joueurs</p>
               <div className="flex items-baseline mb-6">
@@ -291,7 +350,7 @@ const LandingPage = () => {
             </div>
 
             {/* Tier 3 : Prestations */}
-            <div className="p-8 rounded-3xl border border-slate-200 bg-slate-50 hover:border-purple-300 transition flex flex-col">
+            <div className="p-8 rounded-3xl border border-slate-200 bg-white hover:border-purple-300 transition flex flex-col shadow-sm">
               <h4 className="text-lg font-bold text-slate-700 mb-2">Pro & Sur Mesure</h4>
               <p className="text-xs text-slate-400 uppercase tracking-wide font-bold mb-4">+200 Joueurs</p>
               <div className="flex items-baseline mb-6">
@@ -312,7 +371,7 @@ const LandingPage = () => {
         </div>
       </section>
 
-      {/* --- FORMULAIRE CONTACT --- */}
+      {/* --- FORMULAIRE CONTACT (Inchangé) --- */}
       <section id="contact" className="py-20 px-6 bg-slate-50">
         <div className="max-w-2xl mx-auto bg-white p-8 rounded-3xl shadow-sm border border-slate-100">
           <div className="text-center mb-8">
