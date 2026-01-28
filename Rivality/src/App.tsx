@@ -302,68 +302,86 @@ const LandingPage = () => {
         </div>
       </section>
 
-      {/* --- TARIFICATION (Couleur de fond modifiée pour l'alternance) --- */}
+      {/* --- TARIFICATION (4 OFFRES) --- */}
       <section id="pricing" className={`py-20 px-6 ${colors.bgLight}`}>
-        <div className="max-w-5xl mx-auto">
+        <div className="max-w-7xl mx-auto">
           <div className="text-center mb-16">
             <h3 className="text-3xl font-bold text-slate-900">Abonnements Club</h3>
-            <p className="text-slate-600 mt-2">Tarification mensuelle simple, basée sur la taille de votre Vestiaire.</p>
+            <p className="text-slate-600 mt-2">Une offre adaptée à chaque taille de vestiaire. Sans engagement.</p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 items-start">
             
-            {/* Tier 1 */}
-            <div className="p-8 rounded-3xl border border-slate-200 bg-white hover:border-purple-300 transition relative flex flex-col shadow-sm">
+            {/* Offre 1 : 50€ */}
+            <div className="p-6 rounded-3xl border border-slate-200 bg-white hover:border-purple-300 transition relative flex flex-col shadow-sm h-full">
               <h4 className="text-lg font-bold text-slate-700 mb-2">Amateur</h4>
-              <p className="text-xs text-slate-400 uppercase tracking-wide font-bold mb-4">Jusqu'à 500 Joueurs</p>
+              <p className="text-xs text-slate-400 uppercase tracking-wide font-bold mb-4">Jusqu'à 50 Adhérents</p>
               <div className="flex items-baseline mb-6">
-                <span className="text-4xl font-extrabold text-slate-900">49€</span>
+                <span className="text-4xl font-extrabold text-slate-900">50€</span>
                 <span className="text-slate-500 ml-1">/ mois</span>
               </div>
               <ul className="space-y-3 mb-8 text-sm text-slate-600 flex-1">
-                <li>✓ Accès "Le Vestiaire" complet</li>
+                <li>✓ Accès "Le Vestiaire"</li>
                 <li>✓ App Coach & Joueur</li>
-                <li>✓ Support Email</li>
+                <li>✓ Support Email 48h</li>
               </ul>
               <Link to="/login" className="block w-full py-2.5 rounded-xl text-center font-bold text-purple-700 bg-purple-50 hover:bg-purple-100 transition">
-                Essayer Gratuitement
+                Démarrer
               </Link>
             </div>
 
-            {/* Tier 2 */}
-            <div className="p-8 rounded-3xl border-2 border-purple-600 shadow-xl relative bg-slate-900 text-white transform md:-translate-y-4 flex flex-col">
-              <div className="absolute top-0 right-0 bg-purple-600 text-white text-xs font-bold px-3 py-1 rounded-bl-lg">RECOMMANDÉ</div>
+            {/* Offre 2 : 85€ (Mise en avant) */}
+            <div className="p-6 rounded-3xl border-2 border-purple-600 shadow-xl relative bg-slate-900 text-white transform md:-translate-y-4 flex flex-col z-10 h-full">
+              <div className="absolute top-0 right-0 bg-purple-600 text-white text-xs font-bold px-3 py-1 rounded-bl-lg">POPULAIRE</div>
               <h4 className="text-lg font-bold text-white mb-2">Semi-Pro</h4>
-              <p className="text-xs text-purple-300 uppercase tracking-wide font-bold mb-4">500 à 10000 Joueurs</p>
+              <p className="text-xs text-purple-300 uppercase tracking-wide font-bold mb-4">50 à 200 Adhérents</p>
               <div className="flex items-baseline mb-6">
-                <span className="text-5xl font-extrabold text-white">89€</span>
+                <span className="text-4xl font-extrabold text-white">85€</span>
                 <span className="text-purple-200 ml-1">/ mois</span>
               </div>
               <ul className="space-y-3 mb-8 text-sm text-slate-300 flex-1">
                 <li>✓ Tout le pack "Amateur"</li>
-                <li>✓ Support Prioritaire (Tel)</li>
-                <li>✓ Aide à la configuration</li>
+                <li>✓ Support Prioritaire</li>
+                <li>✓ Import de données offert</li>
               </ul>
               <Link to="/login" className="block w-full py-3 rounded-xl text-center font-bold text-purple-900 bg-white hover:bg-slate-100 transition">
-                Choisir cette offre
+                Choisir
               </Link>
             </div>
 
-            {/* Tier 3 : Prestations */}
-            <div className="p-8 rounded-3xl border border-slate-200 bg-white hover:border-purple-300 transition flex flex-col shadow-sm">
-              <h4 className="text-lg font-bold text-slate-700 mb-2">Pro & Sur Mesure</h4>
-              <p className="text-xs text-slate-400 uppercase tracking-wide font-bold mb-4">+1000 Joueurs</p>
+            {/* Offre 3 : 100€ */}
+            <div className="p-6 rounded-3xl border border-slate-200 bg-white hover:border-purple-300 transition relative flex flex-col shadow-sm h-full">
+              <h4 className="text-lg font-bold text-slate-700 mb-2">Pro</h4>
+              <p className="text-xs text-slate-400 uppercase tracking-wide font-bold mb-4">200 à 500 Adhérents</p>
               <div className="flex items-baseline mb-6">
-                <span className="text-3xl font-bold text-slate-900">Sur Devis</span>
+                <span className="text-4xl font-extrabold text-slate-900">100€</span>
+                <span className="text-slate-500 ml-1">/ mois</span>
+              </div>
+              <ul className="space-y-3 mb-8 text-sm text-slate-600 flex-1">
+                <li>✓ Tout le pack "Semi-Pro"</li>
+                <li>✓ Multi-Comptes Admin</li>
+                <li>✓ Formation Visio (1h)</li>
+              </ul>
+              <Link to="/login" className="block w-full py-2.5 rounded-xl text-center font-bold text-purple-700 bg-purple-50 hover:bg-purple-100 transition">
+                Choisir
+              </Link>
+            </div>
+
+            {/* Offre 4 : Sur Devis */}
+            <div className="p-6 rounded-3xl border border-slate-200 bg-purple-50 hover:border-purple-300 transition relative flex flex-col shadow-sm h-full">
+              <h4 className="text-lg font-bold text-purple-900 mb-2">Elite / Custom</h4>
+              <p className="text-xs text-purple-400 uppercase tracking-wide font-bold mb-4">+500 Adhérents</p>
+              <div className="flex items-baseline mb-6">
+                <span className="text-3xl font-bold text-purple-900">Sur Devis</span>
               </div>
               <div className="mb-6 flex-1">
-                <p className="text-sm font-bold text-purple-700 mb-2">Besoin d'extensions ?</p>
+                <p className="text-sm font-bold text-purple-700 mb-2">Grands Clubs & Ligues</p>
                 <p className="text-sm text-slate-600 leading-snug">
-                  Notre équipe technique peut développer des modules spécifiques (API, Stats avancées) pour votre structure.
+                  API dédiée, développements spécifiques et accompagnement sur site.
                 </p>
               </div>
-              <a href="#contact" className="block w-full py-2.5 rounded-xl text-center font-bold text-slate-700 border border-slate-300 hover:bg-white transition">
-                Contacter l'équipe
+              <a href="#contact" className="block w-full py-2.5 rounded-xl text-center font-bold text-slate-700 border border-slate-300 bg-white hover:bg-slate-50 transition">
+                Nous contacter
               </a>
             </div>
 
