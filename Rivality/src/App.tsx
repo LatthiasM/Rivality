@@ -317,7 +317,7 @@ const LandingPage = () => {
               <h4 className="text-lg font-bold text-slate-700 mb-2">Amateur</h4>
               <p className="text-xs text-slate-400 uppercase tracking-wide font-bold mb-4">Jusqu'à 50 Adhérents</p>
               <div className="flex items-baseline mb-6">
-                <span className="text-4xl font-extrabold text-slate-900">50€</span>
+                <span className="text-4xl font-extrabold text-slate-900">15€</span>
                 <span className="text-slate-500 ml-1">/ mois</span>
               </div>
               <ul className="space-y-3 mb-8 text-sm text-slate-600 flex-1">
@@ -336,7 +336,7 @@ const LandingPage = () => {
               <h4 className="text-lg font-bold text-white mb-2">Semi-Pro</h4>
               <p className="text-xs text-purple-300 uppercase tracking-wide font-bold mb-4">50 à 200 Adhérents</p>
               <div className="flex items-baseline mb-6">
-                <span className="text-4xl font-extrabold text-white">85€</span>
+                <span className="text-4xl font-extrabold text-white">50€</span>
                 <span className="text-purple-200 ml-1">/ mois</span>
               </div>
               <ul className="space-y-3 mb-8 text-sm text-slate-300 flex-1">
@@ -372,7 +372,7 @@ const LandingPage = () => {
               <h4 className="text-lg font-bold text-purple-900 mb-2">Elite / Custom</h4>
               <p className="text-xs text-purple-400 uppercase tracking-wide font-bold mb-4">+500 Adhérents</p>
               <div className="flex items-baseline mb-6">
-                <span className="text-3xl font-bold text-purple-900">Sur Devis</span>
+                <span className="text-3xl font-bold text-purple-900">350</span>
               </div>
               <div className="mb-6 flex-1">
                 <p className="text-sm font-bold text-purple-700 mb-2">Grands Clubs & Ligues</p>
